@@ -1,0 +1,77 @@
+<div class="vkecom-cart">
+  <h2 class="vkecom-cart-title">Cart</h2>
+  
+  <div class="vkecom-cart-items" *ngIf="items().length > 0; else emptyCart">
+    <div
+      *ngFor="let item of items()"
+      class="vkecom-cart-item"
+      [attr.data-item-id]="item.id"
+    >
+      <div class="vkecom-cart-item-image">
+        <img
+          *ngIf="item.product.image"
+          [src]="item.product.image"
+          [alt]="item.product.name"
+          loading="lazy"
+        />
+      </div>
+      
+      <div class="vkecom-cart-item-details">
+        <h3 class="vkecom-cart-item-name">{{ item.product.name }}</h3>
+        <p class="vkecom-cart-item-price">
+          ${{ formatPrice(item.product.price) }}
+        </p>
+      </div>
+      
+      <div class="vkecom-cart-item-quantity">
+        <button
+          type="button"
+          class="vkecom-cart-item-quantity-decrease"
+          (click)="decreaseQuantity(item.id)"
+          [attr.aria-label]="'Decrease quantity of ' + item.product.name"
+        >
+          -
+        </button>
+        <span class="vkecom-cart-item-quantity-value">{{ item.quantity }}</span>
+        <button
+          type="button"
+          class="vkecom-cart-item-quantity-increase"
+          (click)="increaseQuantity(item.id)"
+          [attr.aria-label]="'Increase quantity of ' + item.product.name"
+        >
+          +
+        </button>
+      </div>
+      
+      <button
+        type="button"
+        class="vkecom-cart-item-remove"
+        (click)="removeItem(item.id)"
+        [attr.aria-label]="'Remove ' + item.product.name + ' from cart'"
+      >
+        Remove
+      </button>
+    </div>
+  </div>
+  
+  <ng-template #emptyCart>
+    <div class="vkecom-cart-empty">
+      <p>Your cart is empty</p>
+    </div>
+  </ng-template>
+  
+  <div class="vkecom-cart-footer" *ngIf="items().length > 0">
+    <div class="vkecom-cart-total">
+      <span class="vkecom-cart-total-label">Total:</span>
+      <span class="vkecom-cart-total-value">${{ formatPrice(total()) }}</span>
+    </div>
+    <button
+      type="button"
+      class="vkecom-cart-clear"
+      (click)="clearCart()"
+    >
+      Clear Cart
+    </button>
+  </div>
+</div>
+
