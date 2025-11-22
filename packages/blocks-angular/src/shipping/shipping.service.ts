@@ -2,13 +2,12 @@
  * Angular service for shipping calculation using Signals
  */
 
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { ShippingManager, createShippingManager } from '@vk/blocks-core';
 import type {
   ShippingAddress,
   ShippingCalculationRequest,
   ShippingCalculationResult,
-  ShippingManagerOptions,
   ShippingRate,
 } from '@vk/blocks-core';
 

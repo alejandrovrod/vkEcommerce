@@ -2,15 +2,15 @@
  * Vue composable for product management
  */
 
-import { ref, computed, onMounted, readonly } from 'vue';
-import { ProductManager, createProductManager, ProductSearch } from '@vk/blocks-core';
+import { ref, onMounted, readonly } from 'vue';
+import { createProductManager, ProductSearch } from '@vk/blocks-core';
 import type { Product, ProductManagerOptions, ProductFilter, ProductSort } from '@vk/blocks-core';
 
 /**
  * Use products composable return type
  */
 export interface UseProductsReturn {
-  products: import('vue').Readonly<import('vue').Ref<Product[]>>;
+  products: Readonly<import('vue').Ref<Product[]>>;
   loading: Readonly<import('vue').Ref<boolean>>;
   error: Readonly<import('vue').Ref<Error | null>>;
   getProductById: (id: string) => Product | undefined;
@@ -38,7 +38,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   onMounted(async () => {
     try {
       await manager.initialize();
-      products.value = manager.getAllProducts();
+      products.value = manager.getAllProducts() as Product[];
       loading.value = false;
     } catch (err) {
       error.value = err instanceof Error ? err : new Error(String(err));
@@ -49,12 +49,12 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   const getProductById = (id: string): Product | undefined => manager.getProductById(id) as Product | undefined;
   const getProductBySku = (sku: string): Product | undefined => manager.getProductBySku(sku) as Product | undefined;
   const getProductsByCategory = (categoryId: string): Product[] => manager.getProductsByCategory(categoryId) as Product[];
-  const getProductsByTag = (tag: string): Product[] => manager.getProductsByTag(tag);
+  const getProductsByTag = (tag: string): Product[] => (manager.getProductsByTag(tag) as any) as Product[];
 
   const addProduct = (product: Product) => {
     try {
-      manager.addProduct(product);
-      products.value = manager.getAllProducts();
+      manager.addProduct(product as any);
+      products.value = manager.getAllProducts() as Product[];
       error.value = null;
     } catch (err) {
       const errObj = err instanceof Error ? err : new Error(String(err));
@@ -66,7 +66,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   const updateProduct = (id: string, updates: Partial<Product>) => {
     try {
       manager.updateProduct(id, updates);
-      products.value = manager.getAllProducts();
+      products.value = manager.getAllProducts() as Product[];
       error.value = null;
     } catch (err) {
       const errObj = err instanceof Error ? err : new Error(String(err));
@@ -78,7 +78,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   const removeProduct = (id: string) => {
     try {
       manager.removeProduct(id);
-      products.value = manager.getAllProducts();
+      products.value = manager.getAllProducts() as Product[];
       error.value = null;
     } catch (err) {
       const errObj = err instanceof Error ? err : new Error(String(err));
@@ -89,8 +89,8 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
 
   const setProducts = (newProducts: Product[]) => {
     try {
-      manager.setProducts(newProducts);
-      products.value = manager.getAllProducts();
+      manager.setProducts(newProducts as any);
+      products.value = manager.getAllProducts() as Product[];
       error.value = null;
     } catch (err) {
       const errObj = err instanceof Error ? err : new Error(String(err));
@@ -115,9 +115,9 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   };
 
   return {
-    products: readonly(products),
-    loading: readonly(loading),
-    error: readonly(error),
+    products: readonly(products) as any,
+    loading: readonly(loading) as any,
+    error: readonly(error) as any,
     getProductById,
     getProductBySku,
     getProductsByCategory,
