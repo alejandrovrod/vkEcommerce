@@ -21,9 +21,55 @@ Modular ecommerce blocks for React, Vue, and Angular. Framework-agnostic core wi
 
 ## Installation
 
+### Para Desarrollo (Monorepo)
+
 ```bash
 pnpm install
 ```
+
+### Para Usar en Tu Proyecto
+
+Los paquetes están publicados en **GitHub Packages**. Para instalarlos:
+
+1. **Configura el registry de GitHub Packages** (ver [docs/INSTALLATION.md](./docs/INSTALLATION.md) para detalles completos):
+
+   Crea un archivo `.npmrc` en la raíz de tu proyecto:
+   ```
+   @vk:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+   ```
+
+2. **Crea un Personal Access Token** en GitHub con el scope `read:packages`
+
+3. **Configura la variable de entorno**:
+   ```bash
+   export GITHUB_TOKEN=tu_token_aqui
+   ```
+
+4. **Instala los paquetes**:
+
+   **React:**
+   ```bash
+   npm install @vk/blocks-core @vk/blocks-react
+   # o
+   pnpm add @vk/blocks-core @vk/blocks-react
+   ```
+
+   **Vue:**
+   ```bash
+   npm install @vk/blocks-core @vk/blocks-vue
+   # o
+   pnpm add @vk/blocks-core @vk/blocks-vue
+   ```
+
+   **Angular:**
+   ```bash
+   npm install @vk/blocks-core @vk/blocks-angular
+   # o
+   pnpm add @vk/blocks-core @vk/blocks-angular
+   ```
+
+Para más detalles, consulta la [guía completa de instalación](./docs/INSTALLATION.md).
 
 ## Development
 

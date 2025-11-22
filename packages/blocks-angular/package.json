@@ -52,5 +52,13 @@
     "angular",
     "services"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alejandrovrod/vkEcommerce.git",
+    "directory": "packages/blocks-angular"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }

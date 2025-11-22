@@ -1,0 +1,99 @@
+name: Publish Packages to GitHub Packages
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 0.1.0)'
+        required: true
+        type: string
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '8'
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@vk'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Get version from release or input
+        id: get_version
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            VERSION="${{ github.event.release.tag_name }}"
+            # Remove 'v' prefix if present
+            VERSION=${VERSION#v}
+          else
+            VERSION="${{ inputs.version }}"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Publishing version: $VERSION"
+
+      - name: Update package versions and dependencies
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          # Update all package versions
+          for dir in packages/blocks-core packages/blocks-react packages/blocks-vue packages/blocks-angular; do
+            node -e "const fs = require('fs'); const pkg = JSON.parse(fs.readFileSync('$dir/package.json', 'utf8')); pkg.version = '$VERSION'; fs.writeFileSync('$dir/package.json', JSON.stringify(pkg, null, 2))"
+          done
+          # Update dependencies in framework packages
+          for dir in packages/blocks-react packages/blocks-vue packages/blocks-angular; do
+            node -e "const fs = require('fs'); const pkg = JSON.parse(fs.readFileSync('$dir/package.json', 'utf8')); if (pkg.dependencies && pkg.dependencies['@vk/blocks-core']) { pkg.dependencies['@vk/blocks-core'] = '^' + '$VERSION'; fs.writeFileSync('$dir/package.json', JSON.stringify(pkg, null, 2)) }"
+          done
+
+      - name: Publish @vk/blocks-core
+        run: |
+          cd packages/blocks-core
+          pnpm publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish @vk/blocks-react
+        run: |
+          cd packages/blocks-react
+          pnpm publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish @vk/blocks-vue
+        run: |
+          cd packages/blocks-vue
+          pnpm publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish @vk/blocks-angular
+        run: |
+          cd packages/blocks-angular
+          pnpm publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
