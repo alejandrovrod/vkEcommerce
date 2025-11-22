@@ -10,10 +10,10 @@ import type { Product, SearchOptions, SearchResult } from '@vk/blocks-core';
  * Use product search composable return type
  */
 export interface UseProductSearchReturn {
-  results: import('vue').Readonly<import('vue').Ref<SearchResult>>;
-  query: import('vue').Readonly<import('vue').Ref<string>>;
+  results: import('vue').Ref<SearchResult>;
+  query: import('vue').Ref<string>;
   setQuery: (query: string) => void;
-  options: import('vue').Readonly<import('vue').Ref<SearchOptions>>;
+  options: import('vue').Ref<SearchOptions>;
   setOptions: (options: Partial<SearchOptions>) => void;
   search: (products: Product[], options?: SearchOptions) => void;
   clear: () => void;
