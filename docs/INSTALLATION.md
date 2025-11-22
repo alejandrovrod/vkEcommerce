@@ -2,15 +2,40 @@
 
 Los paquetes de `@vk/blocks-*` están publicados en GitHub Packages. Para instalarlos en tu proyecto, necesitas configurar npm/pnpm para usar el registry de GitHub Packages.
 
+## ¿Necesito un Token?
+
+**Depende de si el repositorio es público o privado:**
+
+- ✅ **Repositorio PÚBLICO + paquetes públicos**: **NO necesitas token** para instalar (solo para publicar)
+- 🔒 **Repositorio PRIVADO**: **SÍ necesitas token** con scope `read:packages`
+
+Los paquetes se publican con `--access public`, así que si el repositorio es público, puedes instalarlos sin token.
+
 ## Configuración Inicial
 
-### 1. Crear un Personal Access Token (PAT) en GitHub
+### Opción 1: Sin Token (Solo para repositorios públicos)
+
+Si el repositorio es público, simplemente configura el registry:
+
+#### Para npm/pnpm:
+
+Crea un archivo `.npmrc` en la raíz de tu proyecto:
+
+```
+@vk:registry=https://npm.pkg.github.com
+```
+
+**¡Eso es todo!** No necesitas token.
+
+### Opción 2: Con Token (Para repositorios privados o si la opción 1 no funciona)
+
+#### 1. Crear un Personal Access Token (PAT) en GitHub
 
 1. Ve a GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
 2. Crea un nuevo token con el scope `read:packages`
 3. Copia el token generado
 
-### 2. Configurar el Registry
+#### 2. Configurar el Registry
 
 #### Para npm:
 
@@ -30,6 +55,11 @@ Crea o edita el archivo `.npmrc` en la raíz de tu proyecto:
 //npm.pkg.github.com/:_authToken=TU_TOKEN_AQUI
 ```
 
+**Nota:** Si el repositorio es público, puedes omitir la línea del token y solo usar:
+```
+@vk:registry=https://npm.pkg.github.com
+```
+
 #### Para yarn:
 
 Crea o edita el archivo `.yarnrc.yml` en la raíz de tu proyecto:
@@ -46,9 +76,9 @@ Y configura el token en `.npmrc`:
 //npm.pkg.github.com/:_authToken=TU_TOKEN_AQUI
 ```
 
-### 3. Configurar el Token de Forma Segura
+### 3. Configurar el Token de Forma Segura (Solo si usas token)
 
-**⚠️ IMPORTANTE:** Nunca commits el token directamente en `.npmrc`. Usa variables de entorno:
+**⚠️ IMPORTANTE:** Si necesitas usar un token, nunca lo commits directamente en `.npmrc`. Usa variables de entorno:
 
 #### Opción 1: Variable de entorno (Recomendado)
 
@@ -155,6 +185,11 @@ npm view @vk/blocks-core versions --registry=https://npm.pkg.github.com
 
 ### Error: 401 Unauthorized
 
+**Si el repositorio es público:**
+- Intenta primero sin token (solo con `@vk:registry=https://npm.pkg.github.com`)
+- Si aún falla, puede ser una limitación de GitHub Packages - usa un token
+
+**Si el repositorio es privado o necesitas token:**
 - Verifica que tu token tenga el scope `read:packages`
 - Asegúrate de que el token esté configurado correctamente en `.npmrc`
 - Verifica que el scope `@vk` esté configurado correctamente

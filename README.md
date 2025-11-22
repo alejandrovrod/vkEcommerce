@@ -31,22 +31,20 @@ pnpm install
 
 Los paquetes están publicados en **GitHub Packages**. Para instalarlos:
 
-1. **Configura el registry de GitHub Packages** (ver [docs/INSTALLATION.md](./docs/INSTALLATION.md) para detalles completos):
+1. **Configura el registry de GitHub Packages**:
 
    Crea un archivo `.npmrc` en la raíz de tu proyecto:
    ```
    @vk:registry=https://npm.pkg.github.com
+   ```
+   
+   **Nota:** Si el repositorio es público, esto es suficiente. Si es privado o tienes problemas, agrega:
+   ```
    //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
    ```
+   Y configura la variable de entorno `GITHUB_TOKEN` con un Personal Access Token que tenga el scope `read:packages`.
 
-2. **Crea un Personal Access Token** en GitHub con el scope `read:packages`
-
-3. **Configura la variable de entorno**:
-   ```bash
-   export GITHUB_TOKEN=tu_token_aqui
-   ```
-
-4. **Instala los paquetes**:
+2. **Instala los paquetes**:
 
    **React:**
    ```bash
