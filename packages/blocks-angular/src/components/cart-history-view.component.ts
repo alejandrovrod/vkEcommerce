@@ -33,7 +33,7 @@ import type { CartHistoryEntry, CartHistoryOptions } from '@vk/blocks-core';
                   {{ entry.timestamp | date : 'short' }}
                 </div>
                 <div class="vkecom-cart-history-entry-items">
-                  {{ entry.state.itemCount + ' items - ' + formatPrice(entry.state.total) }}
+                  {{ formatCartHistoryEntry(entry) }}
                 </div>
               </div>
               <div class="vkecom-cart-history-entry-actions">
@@ -81,6 +81,10 @@ export class CartHistoryViewComponent {
 
   formatPrice(price: number): string {
     return `$${price.toFixed(2)}`;
+  }
+
+  formatCartHistoryEntry(entry: CartHistoryEntry): string {
+    return `${entry.state.itemCount} items - ${this.formatPrice(entry.state.total)}`;
   }
 }
 
