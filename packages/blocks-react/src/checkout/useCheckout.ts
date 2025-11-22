@@ -122,18 +122,8 @@ export function useCheckout(options?: CheckoutOptions): UseCheckoutReturn {
 
   // Setup status change callback
   useEffect(() => {
-    const originalOnStatusChange = options?.onStatusChange;
-    if (originalOnStatusChange) {
-      const unsubscribe = manager.subscribe((updatedSession) => {
-        setSession(updatedSession);
-        originalOnStatusChange(updatedSession);
-      });
-      return unsubscribe;
-    }
-
-    // Recreate manager with enhanced callback
-    // Note: In a real implementation, you might want to update the manager's callback
-    // For now, we'll rely on the session state updates
+    // Note: Status change callback is handled via session state updates
+    // The manager's onStatusChange option is set during initialization
   }, [options]);
 
   const initializeSession = useCallback(
