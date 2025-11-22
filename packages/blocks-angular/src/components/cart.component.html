@@ -19,7 +19,7 @@
       <div class="vkecom-cart-item-details">
         <h3 class="vkecom-cart-item-name">{{ item.product.name }}</h3>
         <p class="vkecom-cart-item-price">
-          ${{ formatPrice(item.product.price) }}
+          {{ '$' + formatPrice(item.product.price) }}
         </p>
       </div>
       
@@ -63,7 +63,7 @@
   <div class="vkecom-cart-footer" *ngIf="items().length > 0">
     <div class="vkecom-cart-total">
       <span class="vkecom-cart-total-label">Total:</span>
-      <span class="vkecom-cart-total-value">${{ formatPrice(total()) }}</span>
+      <span class="vkecom-cart-total-value">{{ '$' + formatPrice(total()) }}</span>
     </div>
     <button
       type="button"

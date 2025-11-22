@@ -2,7 +2,7 @@
  * Angular service for product management using Signals
  */
 
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { ProductManager, createProductManager } from '@vk/blocks-core';
 import { ProductSearch } from '@vk/blocks-core';
 import type { Product, ProductManagerOptions, SearchOptions, SearchResult, ProductFilter, ProductSort } from '@vk/blocks-core';
@@ -37,19 +37,19 @@ export class ProductService {
   }
 
   getProductById(id: string): Product | undefined {
-    return this.manager.getProductById(id);
+    return this.manager.getProductById(id) as Product | undefined;
   }
 
   getProductBySku(sku: string): Product | undefined {
-    return this.manager.getProductBySku(sku);
+    return this.manager.getProductBySku(sku) as Product | undefined;
   }
 
   getProductsByCategory(categoryId: string): Product[] {
-    return this.manager.getProductsByCategory(categoryId);
+    return this.manager.getProductsByCategory(categoryId) as Product[];
   }
 
   getProductsByTag(tag: string): Product[] {
-    return this.manager.getProductsByTag(tag);
+    return this.manager.getProductsByTag(tag) as Product[];
   }
 
   addProduct(product: Product): void {

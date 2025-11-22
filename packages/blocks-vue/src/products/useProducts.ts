@@ -2,7 +2,7 @@
  * Vue composable for product management
  */
 
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, readonly } from 'vue';
 import { ProductManager, createProductManager, ProductSearch } from '@vk/blocks-core';
 import type { Product, ProductManagerOptions, ProductFilter, ProductSort } from '@vk/blocks-core';
 
@@ -131,6 +131,4 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     setSortBy,
   };
 }
-
-import { readonly } from 'vue';
 
