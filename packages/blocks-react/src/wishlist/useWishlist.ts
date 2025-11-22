@@ -3,7 +3,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { WishlistManager, createWishlistManager } from '@vk/blocks-core';
+import { createWishlistManager } from '@vk/blocks-core';
 import type { WishlistItem, WishlistState, WishlistOptions, Product } from '@vk/blocks-core';
 
 /**
