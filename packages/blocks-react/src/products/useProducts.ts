@@ -3,7 +3,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { ProductManager, createProductManager, ProductSearch } from '@vk/blocks-core';
+import { createProductManager, ProductSearch } from '@vk/blocks-core';
 import type { Product, ProductManagerOptions, ProductFilter, ProductSort } from '@vk/blocks-core';
 
 /**
