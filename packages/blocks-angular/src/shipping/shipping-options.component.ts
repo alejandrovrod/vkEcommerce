@@ -30,7 +30,7 @@ import type { ShippingRate } from '@vk/blocks-core';
           <div class="vkecom-shipping-option-content">
             <div class="vkecom-shipping-option-name">{{ rate.option.name }}</div>
             <div class="vkecom-shipping-option-cost">
-              ${{ rate.cost.toFixed(2) }} {{ rate.currency }}
+              ${{ formatPrice(rate.cost) }} {{ rate.currency }}
             </div>
             <div *ngIf="rate.estimatedDays" class="vkecom-shipping-option-days">
               {{ rate.estimatedDays.min }}-{{ rate.estimatedDays.max }} days
@@ -49,5 +49,9 @@ export class ShippingOptionsComponent {
 
   // Alias for select event (for template compatibility)
   onSelect = this.select;
+
+  formatPrice(price: number): string {
+    return price.toFixed(2);
+  }
 }
 

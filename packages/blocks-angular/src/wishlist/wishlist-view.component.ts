@@ -35,7 +35,7 @@ import { WishlistService } from './wishlist.service';
                 <p *ngIf="item.product.description" class="vkecom-wishlist-item-description">
                   {{ item.product.description }}
                 </p>
-                <div class="vkecom-wishlist-item-price">${{ item.product.price.toFixed(2) }}</div>
+                <div class="vkecom-wishlist-item-price">${{ formatPrice(item.product.price) }}</div>
               </div>
               <button
                 type="button"
@@ -57,5 +57,9 @@ export class WishlistViewComponent {
   @Input() emptyMessage = 'Your wishlist is empty';
 
   constructor(public wishlist: WishlistService) {}
+
+  formatPrice(price: number): string {
+    return price.toFixed(2);
+  }
 }
 

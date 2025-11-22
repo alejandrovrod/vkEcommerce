@@ -8,6 +8,6 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   treeshake: true,
-  external: ['@angular/core', '@angular/common', 'rxjs'],
+  external: ['@angular/core', '@angular/common', '@angular/forms', 'rxjs'],
 });
 

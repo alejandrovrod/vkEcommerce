@@ -33,7 +33,7 @@ import type { Product } from '@vk/blocks-core';
               <p *ngIf="product.description" class="vkecom-product-item-description">
                 {{ product.description }}
               </p>
-              <div class="vkecom-product-item-price">${{ product.price.toFixed(2) }}</div>
+              <div class="vkecom-product-item-price">${{ formatPrice(product.price) }}</div>
             </div>
           </div>
         </div>
@@ -48,6 +48,10 @@ export class ProductListComponent {
 
   trackByProductId(index: number, product: Product): string {
     return product.id;
+  }
+
+  formatPrice(price: number): string {
+    return price.toFixed(2);
   }
 }
 

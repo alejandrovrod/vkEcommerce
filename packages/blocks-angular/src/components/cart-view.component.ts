@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartService } from '../services/cart.service';
 import { CartSyncService } from '../services/cart-sync.service';
 import { CartItemComponent } from './cart-item.component';
-import type { CartSyncOptions } from '@vk/blocks-core';
+import type { CartSyncOptions, CartHistoryOptions } from '@vk/blocks-core';
 
 /**
  * CartView component - Displays the full cart with all items
