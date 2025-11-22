@@ -87,4 +87,3 @@ export class CartHistoryViewComponent {
     return `${entry.state.itemCount} items - ${this.formatPrice(entry.state.total)}`;
   }
 }
-

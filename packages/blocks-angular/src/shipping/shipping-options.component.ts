@@ -54,4 +54,3 @@ export class ShippingOptionsComponent {
     return `$${price.toFixed(2)}`;
   }
 }
-

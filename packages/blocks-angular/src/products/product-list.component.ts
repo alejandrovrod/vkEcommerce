@@ -54,4 +54,3 @@ export class ProductListComponent {
     return `$${price.toFixed(2)}`;
   }
 }
-

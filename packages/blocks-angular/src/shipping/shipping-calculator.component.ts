@@ -92,7 +92,7 @@ export class ShippingCalculatorComponent {
 
   address = signal<Partial<ShippingAddress>>({});
 
-  constructor(public shipping: ShippingService) {}
+  constructor(public shipping: ShippingService) { }
 
   formatPrice(price: number): string {
     return `$${price.toFixed(2)}`;
@@ -121,4 +121,3 @@ export class ShippingCalculatorComponent {
     }
   }
 }
-

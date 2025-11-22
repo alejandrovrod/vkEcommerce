@@ -56,10 +56,9 @@ export class WishlistViewComponent {
   @Input() className?: string;
   @Input() emptyMessage = 'Your wishlist is empty';
 
-  constructor(public wishlist: WishlistService) {}
+  constructor(public wishlist: WishlistService) { }
 
   formatPrice(price: number): string {
     return `$${price.toFixed(2)}`;
   }
 }
-
