@@ -3,7 +3,7 @@
  */
 
 import { ref, computed } from 'vue';
-import { ShippingManager, createShippingManager } from '@vk/blocks-core';
+import { createShippingManager } from '@vk/blocks-core';
 import type {
   ShippingAddress,
   ShippingCalculationRequest,
