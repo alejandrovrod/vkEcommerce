@@ -13,6 +13,11 @@ export interface ProductSearchProps {
   initialQuery?: string;
   
   /**
+   * Initial search value (alias for initialQuery)
+   */
+  initialValue?: string;
+  
+  /**
    * Initial search options
    */
   initialOptions?: SearchOptions;
