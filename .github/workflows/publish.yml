@@ -80,6 +80,11 @@ jobs:
             node -e "const fs = require('fs'); const pkg = JSON.parse(fs.readFileSync('$dir/package.json', 'utf8')); if (pkg.dependencies && pkg.dependencies['@vk/blocks-core']) { pkg.dependencies['@vk/blocks-core'] = '^' + '$VERSION'; fs.writeFileSync('$dir/package.json', JSON.stringify(pkg, null, 2)) }"
           done
 
+      - name: Configure .npmrc for publishing
+        run: |
+          echo "@vk:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+
       - name: Publish @vk/blocks-core
         run: |
           cd packages/blocks-core
