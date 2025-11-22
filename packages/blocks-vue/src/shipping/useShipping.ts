@@ -102,7 +102,7 @@ export function useShipping(options?: ShippingManagerOptions): UseShippingReturn
   };
 
   return {
-    rates: readonly(rates),
+    rates: readonly(rates) as any,
     loading: readonly(loading),
     error: readonly(error),
     address: readonly(address),
