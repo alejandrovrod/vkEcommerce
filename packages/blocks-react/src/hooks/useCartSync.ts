@@ -5,14 +5,12 @@
 import { useEffect, useRef } from 'react';
 import { CartSync } from '@vk/blocks-core';
 import type { CartSyncOptions } from '@vk/blocks-core';
-import { useCart } from './useCart';
 import type { CartManager } from '@vk/blocks-core';
 
 /**
  * React hook for cart synchronization
  */
 export function useCartSync(options?: CartSyncOptions) {
-  const cart = useCart();
   const syncRef = useRef<CartSync | null>(null);
   const managerRef = useRef<CartManager | null>(null);
 

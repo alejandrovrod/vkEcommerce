@@ -3,7 +3,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { CartHistory, createCartManager } from '@vk/blocks-core';
+import { CartHistory } from '@vk/blocks-core';
 import type { CartHistoryOptions, CartHistoryEntry, CartState } from '@vk/blocks-core';
 
 /**
@@ -18,7 +18,6 @@ export function useCartHistory(options?: CartHistoryOptions) {
 
     // Subscribe to history changes if callback provided
     if (options?.onHistoryChange) {
-      const originalCallback = options.onHistoryChange;
       // Note: CartHistory doesn't have a subscribe method yet
       // We'll need to poll or trigger manually
     }
