@@ -3,7 +3,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { CheckoutManager, createCheckoutManager } from '@vk/blocks-core';
+import { createCheckoutManager } from '@vk/blocks-core';
 import type {
   CheckoutSession,
   CheckoutOptions,
@@ -123,10 +123,13 @@ export function useCheckout(options?: CheckoutOptions): UseCheckoutReturn {
   // Setup status change callback
   useEffect(() => {
     const originalOnStatusChange = options?.onStatusChange;
-    const enhancedCallback = (updatedSession: CheckoutSession) => {
-      setSession(updatedSession);
-      originalOnStatusChange?.(updatedSession);
-    };
+    if (originalOnStatusChange) {
+      const unsubscribe = manager.subscribe((updatedSession) => {
+        setSession(updatedSession);
+        originalOnStatusChange(updatedSession);
+      });
+      return unsubscribe;
+    }
 
     // Recreate manager with enhanced callback
     // Note: In a real implementation, you might want to update the manager's callback
