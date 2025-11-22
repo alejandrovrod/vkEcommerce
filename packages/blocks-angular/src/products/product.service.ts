@@ -54,8 +54,8 @@ export class ProductService {
 
   addProduct(product: Product): void {
     try {
-      this.manager.addProduct(product);
-      this.productsSignal.set(this.manager.getAllProducts());
+      this.manager.addProduct(product as any);
+      this.productsSignal.set(this.manager.getAllProducts() as Product[]);
       this.errorSignal.set(null);
     } catch (error) {
       const err = error instanceof Error ? error : new Error(String(error));
@@ -67,7 +67,7 @@ export class ProductService {
   updateProduct(id: string, updates: Partial<Product>): void {
     try {
       this.manager.updateProduct(id, updates);
-      this.productsSignal.set(this.manager.getAllProducts());
+      this.productsSignal.set(this.manager.getAllProducts() as Product[]);
       this.errorSignal.set(null);
     } catch (error) {
       const err = error instanceof Error ? error : new Error(String(error));
@@ -79,7 +79,7 @@ export class ProductService {
   removeProduct(id: string): void {
     try {
       this.manager.removeProduct(id);
-      this.productsSignal.set(this.manager.getAllProducts());
+      this.productsSignal.set(this.manager.getAllProducts() as Product[]);
       this.errorSignal.set(null);
     } catch (error) {
       const err = error instanceof Error ? error : new Error(String(error));
@@ -90,8 +90,8 @@ export class ProductService {
 
   setProducts(products: Product[]): void {
     try {
-      this.manager.setProducts(products);
-      this.productsSignal.set(this.manager.getAllProducts());
+      this.manager.setProducts(products as any);
+      this.productsSignal.set(this.manager.getAllProducts() as Product[]);
       this.errorSignal.set(null);
     } catch (error) {
       const err = error instanceof Error ? error : new Error(String(error));
@@ -111,8 +111,8 @@ export class ProductService {
         const enhancedOptions: ProductManagerOptions = {
           ...options,
           onUpdate: (products) => {
-            this.productsSignal.set(products);
-            options.onUpdate?.(products);
+            this.productsSignal.set(products as Product[]);
+            options.onUpdate?.(products as Product[]);
           },
         };
         this.manager = createProductManager(enhancedOptions);
@@ -124,7 +124,7 @@ export class ProductService {
       this.currentSort = undefined;
       this.currentPage = 1;
       this.currentPageSize = 20;
-      this.productsSignal.set(this.manager.getAllProducts());
+      this.productsSignal.set(this.manager.getAllProducts() as Product[]);
       this.loadingSignal.set(false);
       this.errorSignal.set(null);
     } catch (error) {
@@ -148,7 +148,7 @@ export class ProductService {
   setFilters(filters: ProductFilter): void {
     this.currentFilters = filters;
     const result = this.search({ filters });
-    this.productsSignal.set(result.products);
+    this.productsSignal.set(result.products as Product[]);
   }
 
   /**
@@ -157,7 +157,7 @@ export class ProductService {
   setSearchQuery(query: string): void {
     this.currentQuery = query;
     const result = this.search({ query });
-    this.productsSignal.set(result.products);
+    this.productsSignal.set(result.products as Product[]);
   }
 
   /**
@@ -166,7 +166,7 @@ export class ProductService {
   setSortBy(sort: ProductSort): void {
     this.currentSort = sort;
     const result = this.search({ sort });
-    this.productsSignal.set(result.products);
+    this.productsSignal.set(result.products as Product[]);
   }
 
   /**
@@ -178,7 +178,7 @@ export class ProductService {
       this.currentPageSize = pageSize;
     }
     const result = this.search({ page, pageSize });
-    this.productsSignal.set(result.products);
+    this.productsSignal.set(result.products as Product[]);
   }
 
   /**
@@ -187,14 +187,14 @@ export class ProductService {
   setLimit(pageSize: number): void {
     this.currentPageSize = pageSize;
     const result = this.search({ pageSize });
-    this.productsSignal.set(result.products);
+    this.productsSignal.set(result.products as Product[]);
   }
 
   /**
    * Refresh products
    */
   refreshProducts(): void {
-    this.productsSignal.set(this.manager.getAllProducts());
+    this.productsSignal.set(this.manager.getAllProducts() as Product[]);
   }
 
   /**

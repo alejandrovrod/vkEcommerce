@@ -17,7 +17,7 @@ import type { Product } from '@vk/blocks-core';
       </div>
       <div *ngIf="products.length > 0" role="list">
           <div
-            *ngFor="let product of products; let i = index; trackBy: trackByProductId"
+            *ngFor="let product of products; trackBy: trackByProductId"
             role="listitem"
             class="vkecom-product-list-item"
           >
@@ -46,7 +46,7 @@ export class ProductListComponent {
   @Input() className?: string;
   @Input() emptyMessage = 'No products found';
 
-  trackByProductId(index: number, product: Product): string {
+  trackByProductId(_index: number, product: Product): string {
     return product.id;
   }
 

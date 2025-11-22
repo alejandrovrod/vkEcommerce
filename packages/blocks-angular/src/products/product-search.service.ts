@@ -2,7 +2,7 @@
  * Angular service for product search using Signals
  */
 
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { ProductSearch } from '@vk/blocks-core';
 import type { Product, SearchOptions, SearchResult } from '@vk/blocks-core';
 

@@ -10,7 +10,7 @@ import type { Product, ProductManagerOptions, ProductFilter, ProductSort } from 
  * Use products composable return type
  */
 export interface UseProductsReturn {
-  products: Readonly<import('vue').Ref<Product[]>>;
+  products: import('vue').Readonly<import('vue').Ref<Product[]>>;
   loading: Readonly<import('vue').Ref<boolean>>;
   error: Readonly<import('vue').Ref<Error | null>>;
   getProductById: (id: string) => Product | undefined;
@@ -46,9 +46,9 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     }
   });
 
-  const getProductById = (id: string) => manager.getProductById(id);
-  const getProductBySku = (sku: string) => manager.getProductBySku(sku);
-  const getProductsByCategory = (categoryId: string) => manager.getProductsByCategory(categoryId);
+  const getProductById = (id: string): Product | undefined => manager.getProductById(id) as Product | undefined;
+  const getProductBySku = (sku: string): Product | undefined => manager.getProductBySku(sku) as Product | undefined;
+  const getProductsByCategory = (categoryId: string): Product[] => manager.getProductsByCategory(categoryId) as Product[];
   const getProductsByTag = (tag: string): Product[] => manager.getProductsByTag(tag);
 
   const addProduct = (product: Product) => {
@@ -101,17 +101,17 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
 
   const setFilters = (filters: ProductFilter) => {
     const result = ProductSearch.search(manager.getAllProducts(), { filters });
-    products.value = result.products;
+    products.value = result.products as Product[];
   };
 
   const setSearchQuery = (query: string) => {
     const result = ProductSearch.search(manager.getAllProducts(), { query });
-    products.value = result.products;
+    products.value = result.products as Product[];
   };
 
   const setSortBy = (sort: ProductSort) => {
     const result = ProductSearch.search(manager.getAllProducts(), { sort });
-    products.value = result.products;
+    products.value = result.products as Product[];
   };
 
   return {
