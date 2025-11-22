@@ -122,14 +122,14 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   );
 
   const getProductBySku = useCallback(
-    (sku: string) => manager.getProductBySku(sku),
+    (sku: string) => manager.getProductBySku(sku) as Product | undefined,
     [manager]
   );
 
   const getProductsByCategory = useCallback(
     (categoryId: string) => {
       const result = manager.getProductsByCategory(categoryId);
-      return result;
+      return result as Product[];
     },
     [manager]
   );
@@ -137,7 +137,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   const getProductsByTag = useCallback(
     (tag: string) => {
       const result = manager.getProductsByTag(tag);
-      return result;
+      return result as Product[];
     },
     [manager]
   );
