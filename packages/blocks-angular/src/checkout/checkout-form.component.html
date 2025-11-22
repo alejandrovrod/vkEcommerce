@@ -1,0 +1,94 @@
+<form [class]="'vkecom-checkout-form ' + (className || '')" (ngSubmit)="handleSubmit()">
+  <div class="vkecom-checkout-shipping">
+    <h3>Shipping Address</h3>
+    <input
+      type="text"
+      placeholder="Street"
+      [value]="shippingAddress().street || ''"
+      (input)="shippingAddress.update(a => ({ ...a, street: $any($event.target).value }))"
+      class="vkecom-checkout-field"
+    />
+    <input
+      type="text"
+      placeholder="City"
+      [value]="shippingAddress().city || ''"
+      (input)="shippingAddress.update(a => ({ ...a, city: $any($event.target).value }))"
+      class="vkecom-checkout-field"
+    />
+    <input
+      type="text"
+      placeholder="Postal Code"
+      [value]="shippingAddress().postalCode || ''"
+      (input)="shippingAddress.update(a => ({ ...a, postalCode: $any($event.target).value }))"
+      class="vkecom-checkout-field"
+    />
+    <input
+      type="text"
+      placeholder="Country"
+      [value]="shippingAddress().country || ''"
+      (input)="shippingAddress.update(a => ({ ...a, country: $any($event.target).value }))"
+      class="vkecom-checkout-field"
+    />
+  </div>
+
+  <label class="vkecom-checkout-same-address">
+    <input
+      type="checkbox"
+      [checked]="useSameAddress()"
+      (change)="useSameAddress.set($any($event.target).checked)"
+    />
+    Use same address for billing
+  </label>
+
+  <div *ngIf="!useSameAddress()" class="vkecom-checkout-billing">
+    <h3>Billing Address</h3>
+    <input
+      type="text"
+      placeholder="Street"
+      [value]="billingAddress().street || ''"
+      (input)="billingAddress.update(a => ({ ...a, street: $any($event.target).value }))"
+      class="vkecom-checkout-field"
+    />
+    <input
+      type="text"
+      placeholder="City"
+      [value]="billingAddress().city || ''"
+      (input)="billingAddress.update(a => ({ ...a, city: $any($event.target).value }))"
+      class="vkecom-checkout-field"
+    />
+    <input
+      type="text"
+      placeholder="Postal Code"
+      [value]="billingAddress().postalCode || ''"
+      (input)="billingAddress.update(a => ({ ...a, postalCode: $any($event.target).value }))"
+      class="vkecom-checkout-field"
+    />
+  </div>
+
+  <div class="vkecom-checkout-payment">
+    <h3>Payment Method</h3>
+    <select
+      [value]="paymentMethod().method || ''"
+      (change)="paymentMethod.update(m => ({ ...m, method: $any($event.target).value }))"
+      class="vkecom-checkout-field"
+    >
+      <option value="">Select payment method</option>
+      <option value="credit_card">Credit Card</option>
+      <option value="debit_card">Debit Card</option>
+      <option value="mercado_pago">Mercado Pago</option>
+    </select>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="checkout.loading() || !checkout.session() || checkout.status() !== 'pending'"
+    class="vkecom-checkout-submit"
+  >
+    {{ checkout.loading() ? 'Processing...' : 'Complete Checkout' }}
+  </button>
+
+  <div *ngIf="checkout.error()" class="vkecom-checkout-error">
+    {{ checkout.error()?.message }}
+  </div>
+</form>
+

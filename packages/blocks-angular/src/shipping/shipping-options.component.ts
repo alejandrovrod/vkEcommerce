@@ -1,0 +1,53 @@
+/**
+ * Shipping options selector component
+ */
+
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import type { ShippingRate } from '@vk/blocks-core';
+
+@Component({
+  selector: 'vk-shipping-options',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <div [class]="'vkecom-shipping-options ' + (className || '')">
+      <div *ngIf="rates.length === 0" class="vkecom-shipping-options-empty">
+        <p>No shipping options available</p>
+      </div>
+      <div *ngIf="rates.length > 0" role="radiogroup">
+        <label
+          *ngFor="let rate of rates"
+          [class]="['vkecom-shipping-option', { selected: selectedRateId === rate.option.id }]"
+        >
+          <input
+            type="radio"
+            name="shipping-option"
+            [value]="rate.option.id"
+            [checked]="selectedRateId === rate.option.id"
+            (change)="onSelect.emit(rate)"
+          />
+          <div class="vkecom-shipping-option-content">
+            <div class="vkecom-shipping-option-name">{{ rate.option.name }}</div>
+            <div class="vkecom-shipping-option-cost">
+              ${{ rate.cost.toFixed(2) }} {{ rate.currency }}
+            </div>
+            <div *ngIf="rate.estimatedDays" class="vkecom-shipping-option-days">
+              {{ rate.estimatedDays.min }}-{{ rate.estimatedDays.max }} days
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  `,
+})
+export class ShippingOptionsComponent {
+  @Input() rates!: ShippingRate[];
+  @Input() selectedRateId?: string;
+  @Output() select = new EventEmitter<ShippingRate>();
+  @Input() className?: string;
+
+  // Alias for select event (for template compatibility)
+  onSelect = this.select;
+}
+

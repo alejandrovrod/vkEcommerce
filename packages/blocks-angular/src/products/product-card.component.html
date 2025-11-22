@@ -1,0 +1,77 @@
+<article
+  *ngIf="!useCustomContent"
+  [class]="'vkecom-product-card ' + (className || '')"
+  itemscope
+  itemtype="https://schema.org/Product"
+>
+  <!-- Image slot -->
+  <ng-content select="[image]"></ng-content>
+  <div *ngIf="!hasImageSlot" class="vkecom-product-image">
+    <img
+      *ngIf="product.image"
+      [src]="product.image"
+      [alt]="product.name"
+      loading="lazy"
+      itemprop="image"
+    />
+    <div
+      *ngIf="!product.image"
+      class="vkecom-product-image-placeholder"
+      aria-hidden="true"
+    >
+      No image
+    </div>
+  </div>
+
+  <div class="vkecom-product-content">
+    <!-- Title slot -->
+    <ng-content select="[title]"></ng-content>
+    <h3 *ngIf="!hasTitleSlot" class="vkecom-product-title" itemprop="name">
+      {{ product.name }}
+    </h3>
+
+    <p
+      *ngIf="product.description"
+      class="vkecom-product-description"
+      itemprop="description"
+    >
+      {{ product.description }}
+    </p>
+
+    <!-- Price slot -->
+    <ng-content select="[price]"></ng-content>
+    <div
+      *ngIf="!hasPriceSlot"
+      class="vkecom-product-price"
+      itemprop="offers"
+      itemscope
+      itemtype="https://schema.org/Offer"
+    >
+      <span
+        class="vkecom-product-price-value"
+        itemprop="price"
+        [attr.content]="product.price.toString()"
+      >
+        ${{ formatPrice(product.price) }}
+      </span>
+      <meta itemprop="priceCurrency" content="USD" />
+    </div>
+
+    <!-- Button slot -->
+    <ng-content select="[button]"></ng-content>
+    <button
+      *ngIf="!hasButtonSlot"
+      type="button"
+      class="vkecom-product-button"
+      (click)="onAddToCart()"
+      [attr.aria-label]="'Add ' + product.name + ' to cart'"
+    >
+      Add to Cart
+    </button>
+  </div>
+</article>
+
+<div *ngIf="useCustomContent" [class]="'vkecom-product-card ' + (className || '')">
+  <ng-content></ng-content>
+</div>
+

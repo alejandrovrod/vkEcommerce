@@ -13,17 +13,33 @@ import type {
  */
 export class CartManager {
   private store: CartStore;
-  private options: Required<CartManagerOptions>;
+  private options: Required<Omit<CartManagerOptions, 'storage' | 'storageKey'>> & {
+    storage?: CartStorage;
+    storageKey: string;
+  };
 
   constructor(options: CartManagerOptions = {}) {
-    const storage: CartStorage | undefined = options.persist
-      ? new LocalStorageCartStorage(options.storageKey)
-      : undefined;
+    // Determine storage strategy (priority order):
+    // 1. Use custom storage if provided (most flexible)
+    // 2. Use localStorage if persist is true and no custom storage
+    // 3. Use memory storage (no persistence) otherwise (default)
+    let storage: CartStorage | undefined;
+    
+    if (options.storage) {
+      // Custom storage provided - use it (allows IndexedDB, API, custom implementations, etc.)
+      storage = options.storage;
+    } else if (options.persist) {
+      // Use localStorage as default persistence (only if explicitly requested)
+      storage = new LocalStorageCartStorage(options.storageKey);
+    }
+    // If neither storage nor persist is provided, storage will be undefined
+    // and CartStore will use MemoryCartStorage by default (no persistence)
 
     this.store = CartStore.getInstance(storage);
     this.options = {
+      storage,
       storageKey: options.storageKey || 'vkecomblocks-cart',
-      persist: options.persist !== false,
+      persist: options.persist ?? false, // Default: no persistence (safer for SSR)
       onStateChange: options.onStateChange || (() => {}),
       onError: options.onError || ((error) => console.error(error)),
     };

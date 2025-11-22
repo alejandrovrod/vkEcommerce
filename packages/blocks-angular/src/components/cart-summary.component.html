@@ -1,0 +1,38 @@
+<div [class]="'vkecom-cart-summary ' + (className || '')">
+  <div *ngIf="showItemCount" class="vkecom-cart-summary-item-count">
+    <span>
+      {{ itemCount() }} {{ itemCount() === 1 ? 'item' : 'items' }}
+    </span>
+  </div>
+
+  <div *ngIf="showSubtotal" class="vkecom-cart-summary-subtotal">
+    <span class="vkecom-cart-summary-label">Subtotal:</span>
+    <span class="vkecom-cart-summary-value">{{ formatPrice(subtotal()) }}</span>
+  </div>
+
+  <div *ngIf="showTax && taxRate > 0" class="vkecom-cart-summary-tax">
+    <span class="vkecom-cart-summary-label">Tax:</span>
+    <span class="vkecom-cart-summary-value">{{ formatPrice(tax()) }}</span>
+  </div>
+
+  <div *ngIf="showShipping" class="vkecom-cart-summary-shipping">
+    <span class="vkecom-cart-summary-label">Shipping:</span>
+    <span class="vkecom-cart-summary-value">{{ formatPrice(shipping()) }}</span>
+  </div>
+
+  <div *ngIf="showTotal" class="vkecom-cart-summary-total">
+    <span class="vkecom-cart-summary-label">Total:</span>
+    <span class="vkecom-cart-summary-value">{{ formatPrice(finalTotal()) }}</span>
+  </div>
+
+  <div *ngIf="showCheckoutButton" class="vkecom-cart-summary-checkout">
+    <button
+      type="button"
+      class="vkecom-cart-summary-checkout-button"
+      (click)="handleCheckout()"
+    >
+      Checkout
+    </button>
+  </div>
+</div>
+

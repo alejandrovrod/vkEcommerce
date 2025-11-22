@@ -1,0 +1,21 @@
+<div [class]="'vkecom-cart-view ' + (className || '')">
+  <div *ngIf="showHeader" class="vkecom-cart-header">
+    <h2 class="vkecom-cart-title">Cart</h2>
+  </div>
+
+  <div *ngIf="items().length === 0" class="vkecom-cart-empty">
+    <p>{{ emptyMessage }}</p>
+  </div>
+
+  <div *ngIf="items().length > 0" class="vkecom-cart-list" role="list">
+    <div *ngFor="let item of items()" role="listitem">
+      <vk-cart-item
+        [item]="item"
+        (increase)="handleIncrease($event)"
+        (decrease)="handleDecrease($event)"
+        (remove)="handleRemove($event)"
+      />
+    </div>
+  </div>
+</div>
+

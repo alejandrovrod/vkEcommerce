@@ -1,7 +1,6 @@
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onUnmounted } from 'vue';
 import {
   createCartManager,
-  type CartManager,
   type CartState,
   type Product,
   type CartManagerOptions,

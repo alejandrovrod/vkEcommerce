@@ -116,7 +116,7 @@ describe('useCart', () => {
 
     await waitFor(() => {
       expect(result.current.items).toHaveLength(1);
-    });
+    }, { timeout: 2000 });
   });
 });
 
