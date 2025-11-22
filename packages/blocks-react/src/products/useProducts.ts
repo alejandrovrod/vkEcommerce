@@ -109,11 +109,8 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
 
   // Subscribe to updates
   useEffect(() => {
-    if (options?.onUpdate) {
-      const originalOnUpdate = options.onUpdate;
-      // Note: ProductManager doesn't have a subscribe method yet
-      // For now, we'll rely on manual updates
-    }
+    // Note: ProductManager doesn't have a subscribe method yet
+    // For now, we'll rely on manual updates
   }, [manager, options]);
 
   const getProductById = useCallback(
