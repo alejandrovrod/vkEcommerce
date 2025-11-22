@@ -52,6 +52,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Clean build artifacts
+        run: pnpm -r clean || true
+
       - name: Build packages
         run: pnpm build
 
