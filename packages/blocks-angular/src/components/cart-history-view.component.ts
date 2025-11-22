@@ -33,7 +33,7 @@ import type { CartHistoryEntry, CartHistoryOptions } from '@vk/blocks-core';
                   {{ entry.timestamp | date : 'short' }}
                 </div>
                 <div class="vkecom-cart-history-entry-items">
-                  {{ entry.state.itemCount }} items - {{ '$' + formatPrice(entry.state.total) }}
+                  {{ entry.state.itemCount + ' items - $' + formatPrice(entry.state.total) }}
                 </div>
               </div>
               <div class="vkecom-cart-history-entry-actions">
