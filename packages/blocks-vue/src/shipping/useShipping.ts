@@ -2,7 +2,7 @@
  * Vue composable for shipping calculation
  */
 
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { createShippingManager } from '@vk/blocks-core';
 import type {
   ShippingAddress,
