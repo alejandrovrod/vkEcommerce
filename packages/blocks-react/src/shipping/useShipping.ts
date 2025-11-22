@@ -3,7 +3,7 @@
  */
 
 import { useState, useCallback } from 'react';
-import { ShippingManager, createShippingManager } from '@vk/blocks-core';
+import { createShippingManager } from '@vk/blocks-core';
 import type {
   ShippingAddress,
   ShippingCalculationRequest,
