@@ -95,7 +95,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     const initialize = async () => {
       try {
         await manager.initialize();
-        setProducts(manager.getAllProducts());
+        setProducts(manager.getAllProducts() as Product[]);
         setLoading(false);
       } catch (err) {
         const error = err instanceof Error ? err : new Error(String(err));
@@ -117,7 +117,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   }, [manager, options]);
 
   const getProductById = useCallback(
-    (id: string) => manager.getProductById(id),
+    (id: string) => manager.getProductById(id) as Product | undefined,
     [manager]
   );
 
@@ -146,7 +146,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     (product: Product) => {
       try {
         manager.addProduct(product);
-        setProducts(manager.getAllProducts());
+        setProducts(manager.getAllProducts() as Product[]);
         setError(null);
       } catch (err) {
         const error = err instanceof Error ? err : new Error(String(err));
@@ -161,7 +161,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     (id: string, updates: Partial<Product>) => {
       try {
         manager.updateProduct(id, updates);
-        setProducts(manager.getAllProducts());
+        setProducts(manager.getAllProducts() as Product[]);
         setError(null);
       } catch (err) {
         const error = err instanceof Error ? err : new Error(String(err));
@@ -176,7 +176,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     (id: string) => {
       try {
         manager.removeProduct(id);
-        setProducts(manager.getAllProducts());
+        setProducts(manager.getAllProducts() as Product[]);
         setError(null);
       } catch (err) {
         const error = err instanceof Error ? err : new Error(String(err));
@@ -191,7 +191,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     (newProducts: Product[]) => {
       try {
         manager.setProducts(newProducts);
-        setProducts(manager.getAllProducts());
+        setProducts(manager.getAllProducts() as Product[]);
         setError(null);
       } catch (err) {
         const error = err instanceof Error ? err : new Error(String(err));
@@ -205,7 +205,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   const setFilters = useCallback(
     (filters: ProductFilter) => {
       const result = ProductSearch.search(manager.getAllProducts(), { filters });
-      setProducts(result.products);
+      setProducts(result.products as Product[]);
     },
     [manager]
   );
@@ -213,7 +213,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   const setSearchQuery = useCallback(
     (query: string) => {
       const result = ProductSearch.search(manager.getAllProducts(), { query });
-      setProducts(result.products);
+      setProducts(result.products as Product[]);
     },
     [manager]
   );
@@ -221,7 +221,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   const setSortBy = useCallback(
     (sort: ProductSort) => {
       const result = ProductSearch.search(manager.getAllProducts(), { sort });
-      setProducts(result.products);
+      setProducts(result.products as Product[]);
     },
     [manager]
   );
