@@ -6,7 +6,6 @@ import { Injectable, signal, computed } from '@angular/core';
 import { CheckoutManager, createCheckoutManager } from '@vk/blocks-core';
 import type {
   CheckoutSession,
-  CheckoutOptions,
   ShippingAddress,
   BillingAddress,
   PaymentMethodDetails,

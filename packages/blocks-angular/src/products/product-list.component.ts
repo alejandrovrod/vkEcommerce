@@ -33,7 +33,7 @@ import type { Product } from '@vk/blocks-core';
               <p *ngIf="product.description" class="vkecom-product-item-description">
                 {{ product.description }}
               </p>
-              <div class="vkecom-product-item-price">${{ formatPrice(product.price) }}</div>
+              <div class="vkecom-product-item-price">{{ '$' + formatPrice(product.price) }}</div>
             </div>
           </div>
         </div>

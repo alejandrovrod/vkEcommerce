@@ -18,6 +18,13 @@ export class ProductService {
   private productsSignal = signal<Product[]>([]);
   private loadingSignal = signal(true);
   private errorSignal = signal<Error | null>(null);
+  
+  // Search state
+  private currentFilters?: ProductFilter;
+  private currentQuery?: string;
+  private currentSort?: ProductSort;
+  private currentPage = 1;
+  private currentPageSize = 20;
 
   // Public readonly signals
   readonly products = this.productsSignal.asReadonly();
@@ -139,6 +146,7 @@ export class ProductService {
    * Set filters and update products
    */
   setFilters(filters: ProductFilter): void {
+    this.currentFilters = filters;
     const result = this.search({ filters });
     this.productsSignal.set(result.products);
   }
@@ -147,6 +155,7 @@ export class ProductService {
    * Set search query and update products
    */
   setSearchQuery(query: string): void {
+    this.currentQuery = query;
     const result = this.search({ query });
     this.productsSignal.set(result.products);
   }
@@ -155,6 +164,7 @@ export class ProductService {
    * Set sort options and update products
    */
   setSortBy(sort: ProductSort): void {
+    this.currentSort = sort;
     const result = this.search({ sort });
     this.productsSignal.set(result.products);
   }
@@ -163,6 +173,10 @@ export class ProductService {
    * Set page and update products
    */
   setPage(page: number, pageSize?: number): void {
+    this.currentPage = page;
+    if (pageSize !== undefined) {
+      this.currentPageSize = pageSize;
+    }
     const result = this.search({ page, pageSize });
     this.productsSignal.set(result.products);
   }
@@ -171,6 +185,7 @@ export class ProductService {
    * Set page size and update products
    */
   setLimit(pageSize: number): void {
+    this.currentPageSize = pageSize;
     const result = this.search({ pageSize });
     this.productsSignal.set(result.products);
   }
@@ -190,6 +205,7 @@ export class ProductService {
       filters: this.currentFilters,
       query: this.currentQuery,
       sort: this.currentSort,
+      page: this.currentPage,
       pageSize: this.currentPageSize,
     });
     return result.totalPages;
