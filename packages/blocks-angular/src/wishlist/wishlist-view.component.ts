@@ -35,7 +35,7 @@ import { WishlistService } from './wishlist.service';
                 <p *ngIf="item.product.description" class="vkecom-wishlist-item-description">
                   {{ item.product.description }}
                 </p>
-                <div class="vkecom-wishlist-item-price">{{ '$' + formatPrice(item.product.price) }}</div>
+                <div class="vkecom-wishlist-item-price">{{ formatPrice(item.product.price) }}</div>
               </div>
               <button
                 type="button"
@@ -59,7 +59,7 @@ export class WishlistViewComponent {
   constructor(public wishlist: WishlistService) {}
 
   formatPrice(price: number): string {
-    return price.toFixed(2);
+    return `$${price.toFixed(2)}`;
   }
 }
 

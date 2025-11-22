@@ -52,7 +52,7 @@
         itemprop="price"
         [attr.content]="product.price.toString()"
       >
-        {{ '$' + formatPrice(product.price) }}
+        {{ formatPrice(product.price) }}
       </span>
       <meta itemprop="priceCurrency" content="USD" />
     </div>

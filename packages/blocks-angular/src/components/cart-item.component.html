@@ -35,10 +35,10 @@
       itemtype="https://schema.org/Offer"
     >
       <span class="vkecom-cart-item-price-unit">
-        {{ '$' + formatPrice(item.product.price) }}
+        {{ formatPrice(item.product.price) }}
       </span>
       <span class="vkecom-cart-item-price-total">
-        Total: {{ '$' + formatPrice(item.product.price * item.quantity) }}
+        Total: {{ formatPrice(item.product.price * item.quantity) }}
       </span>
       <meta itemprop="price" [content]="item.product.price.toString()" />
       <meta itemprop="priceCurrency" content="USD" />

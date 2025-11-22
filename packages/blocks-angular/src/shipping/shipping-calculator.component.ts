@@ -66,7 +66,7 @@ import type { ShippingAddress, ShippingCalculationRequest } from '@vk/blocks-cor
         >
           <div class="vkecom-shipping-rate-name">{{ rate.option.name }}</div>
           <div class="vkecom-shipping-rate-cost">
-            {{ '$' + formatPrice(rate.cost) }} {{ rate.currency }}
+            {{ formatPrice(rate.cost) }} {{ rate.currency }}
           </div>
           <div *ngIf="rate.estimatedDays" class="vkecom-shipping-rate-days">
             {{ rate.estimatedDays.min }}-{{ rate.estimatedDays.max }} days
@@ -95,7 +95,7 @@ export class ShippingCalculatorComponent {
   constructor(public shipping: ShippingService) {}
 
   formatPrice(price: number): string {
-    return price.toFixed(2);
+    return `$${price.toFixed(2)}`;
   }
 
   async handleSubmit(): Promise<void> {

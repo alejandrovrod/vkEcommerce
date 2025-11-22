@@ -32,6 +32,6 @@ export class CartItemComponent {
   }
 
   formatPrice(price: number): string {
-    return price.toFixed(2);
+    return `$${price.toFixed(2)}`;
   }
 }

@@ -63,7 +63,7 @@ export class ProductCardComponent implements AfterContentInit {
   }
 
   formatPrice(price: number): string {
-    return price.toFixed(2);
+    return `$${price.toFixed(2)}`;
   }
 }
 
