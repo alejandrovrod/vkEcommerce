@@ -2,7 +2,7 @@
  * React hook for product search
  */
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 import { ProductSearch } from '@vk/blocks-core';
 import type { Product, SearchOptions, SearchResult } from '@vk/blocks-core';
 
