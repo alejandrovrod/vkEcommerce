@@ -65,10 +65,10 @@ export function useProductSearch(initialOptions?: SearchOptions): UseProductSear
   };
 
   return {
-    results: readonly(results),
-    query: readonly(query),
+    results: readonly(results) as any,
+    query: readonly(query) as any,
     setQuery,
-    options: readonly(options),
+    options: readonly(options) as any,
     setOptions,
     search,
     clear,
