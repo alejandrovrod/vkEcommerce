@@ -52,7 +52,7 @@ export function MercadoPagoButton({
   preferenceId,
   className,
   label = 'Pay with Mercado Pago',
-  onSuccess,
+  onSuccess: _onSuccess,
   onError,
   renderButton,
   children,
