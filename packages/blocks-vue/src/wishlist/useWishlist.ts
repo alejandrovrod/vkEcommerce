@@ -65,7 +65,7 @@ export function useWishlist(options?: WishlistOptions): UseWishlistReturn {
   const items = computed(() => state.value.items);
 
   return {
-    items: readonly(items),
+    items: readonly(items) as any,
     itemCount,
     addItem,
     removeItem,
