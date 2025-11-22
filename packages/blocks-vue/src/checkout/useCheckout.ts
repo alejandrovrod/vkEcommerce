@@ -2,8 +2,8 @@
  * Vue composable for checkout management
  */
 
-import { ref, computed, onUnmounted } from 'vue';
-import { CheckoutManager, createCheckoutManager } from '@vk/blocks-core';
+import { ref, computed } from 'vue';
+import { createCheckoutManager } from '@vk/blocks-core';
 import type {
   CheckoutSession,
   CheckoutOptions,

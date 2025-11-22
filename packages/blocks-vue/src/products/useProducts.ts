@@ -49,7 +49,7 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
   const getProductById = (id: string) => manager.getProductById(id);
   const getProductBySku = (sku: string) => manager.getProductBySku(sku);
   const getProductsByCategory = (categoryId: string) => manager.getProductsByCategory(categoryId);
-  const getProductsByTag = (tag: string) => manager.getProductsByTag(tag);
+  const getProductsByTag = (tag: string): Product[] => manager.getProductsByTag(tag);
 
   const addProduct = (product: Product) => {
     try {
