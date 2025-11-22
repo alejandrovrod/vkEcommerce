@@ -2,7 +2,7 @@
  * Vue composable for product search
  */
 
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { ProductSearch } from '@vk/blocks-core';
 import type { Product, SearchOptions, SearchResult } from '@vk/blocks-core';
 
