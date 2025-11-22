@@ -36,8 +36,8 @@ export function CartView({
   itemProps,
   enableSync = false,
   syncOptions,
-  enableHistory = false,
-  historyOptions,
+  enableHistory: _enableHistory = false,
+  historyOptions: _historyOptions,
 }: CartViewProps) {
   const { items, removeItem, updateQuantity } = useCart(cartOptions);
   
