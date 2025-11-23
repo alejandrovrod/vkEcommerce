@@ -18,6 +18,12 @@
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
+  },
+  "dependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/forms": "^21.0.0",
+    "rxjs": "^7.8.2",
+    "zone.js": "^0.15.0"
   }
 }
-

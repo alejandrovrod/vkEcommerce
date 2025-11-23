@@ -18,8 +18,7 @@ import { WishlistService } from './wishlist.service';
       <div *ngIf="wishlist.items().length > 0">
         <div class="vkecom-wishlist-list" role="list">
           <div
-            *ngFor="let item of wishlist.items()"
-            [key]="item.id"
+            *ngFor="let item of wishlist.items(); trackBy: trackByItemId"
             role="listitem"
             class="vkecom-wishlist-item"
           >
@@ -57,6 +56,10 @@ export class WishlistViewComponent {
   @Input() emptyMessage = 'Your wishlist is empty';
 
   constructor(public wishlist: WishlistService) { }
+
+  trackByItemId(_index: number, item: { id: string }): string {
+    return item.id;
+  }
 
   formatPrice(price: number): string {
     return `$${price.toFixed(2)}`;
