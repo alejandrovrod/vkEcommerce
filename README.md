@@ -69,6 +69,17 @@ Los paquetes están publicados en **GitHub Packages**. Para instalarlos:
 
 Para más detalles, consulta la [guía completa de instalación](./docs/INSTALLATION.md).
 
+## 📖 Documentación
+
+- **[Documentación Completa](./docs/README.md)** - Índice de toda la documentación
+- **[Guía de Instalación](./docs/INSTALLATION.md)** - Cómo instalar y configurar
+- **[API Reference](./docs/API/)** - Documentación completa de la API
+  - [Core API](./docs/API/core/README.md) - Funciones y tipos del core
+  - [React API](./docs/API/react/README.md) - Hooks y componentes React
+  - [Vue API](./docs/API/vue/README.md) - Composables y componentes Vue
+  - [Angular API](./docs/API/angular/README.md) - Servicios y componentes Angular
+- **[Guía de Desarrollo](./docs/DEVELOPMENT.md)** - Para contribuidores
+
 ## Development
 
 ```bash
