@@ -39,22 +39,27 @@ export function CartView({
   enableHistory: _enableHistory = false,
   historyOptions: _historyOptions,
 }: CartViewProps) {
-  const { items, removeItem, updateQuantity } = useCart(cartOptions);
+  const cartResult = useCart(cartOptions);
+  
+  // Defensive: ensure items is always an array
+  const items = Array.isArray(cartResult?.items) ? cartResult.items : [];
+  const removeItem = cartResult?.removeItem || (() => {});
+  const updateQuantity = cartResult?.updateQuantity || (() => {});
   
   // Enable cart synchronization if requested
   useCartSync(enableSync ? syncOptions : undefined);
 
   const handleIncrease = (itemId: string) => {
-    const item = items.find((i) => i.id === itemId);
-    if (item) {
-      updateQuantity(itemId, item.quantity + 1);
+    const item = items.find((i) => i?.id === itemId);
+    if (item && updateQuantity) {
+      updateQuantity(itemId, (item.quantity || 0) + 1);
     }
   };
 
   const handleDecrease = (itemId: string) => {
-    const item = items.find((i) => i.id === itemId);
+    const item = items.find((i) => i?.id === itemId);
     if (item) {
-      if (item.quantity > 1) {
+      if ((item.quantity || 0) > 1) {
         updateQuantity(itemId, item.quantity - 1);
       } else {
         removeItem(itemId);
@@ -68,7 +73,7 @@ export function CartView({
         <div className="vkecom-cart-header">{renderHeader()}</div>
       )}
 
-      {items.length === 0 ? (
+      {!items || items.length === 0 ? (
         <div className="vkecom-cart-empty">
           {renderEmpty ? renderEmpty() : (
             typeof emptyMessage === 'string' ? <p>{emptyMessage}</p> : emptyMessage
@@ -77,21 +82,23 @@ export function CartView({
       ) : (
         <>
           <div className="vkecom-cart-list" role="list">
-            {items.map((item) => (
-              <div key={item.id} role="listitem">
-                {renderItem ? (
-                  renderItem(item)
-                ) : (
-                  <CartItem
-                    item={item}
-                    onIncrease={handleIncrease}
-                    onDecrease={handleDecrease}
-                    onRemove={removeItem}
-                    {...itemProps}
-                  />
-                )}
-              </div>
-            ))}
+            {items
+              .filter((item) => item && item.id && item.product) // Filter out invalid items
+              .map((item) => (
+                <div key={item.id} role="listitem">
+                  {renderItem ? (
+                    renderItem(item)
+                  ) : (
+                    <CartItem
+                      item={item}
+                      onIncrease={handleIncrease}
+                      onDecrease={handleDecrease}
+                      onRemove={removeItem}
+                      {...itemProps}
+                    />
+                  )}
+                </div>
+              ))}
           </div>
 
           {renderFooter && (
