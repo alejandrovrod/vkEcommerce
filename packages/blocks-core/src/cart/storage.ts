@@ -31,11 +31,26 @@ export class LocalStorageCartStorage implements CartStorage {
       if (typeof window !== 'undefined' && window.localStorage) {
         const item = window.localStorage.getItem(this.key);
         if (!item) return null;
-        return JSON.parse(item) as CartState;
+        const parsed = JSON.parse(item) as CartState;
+        // Validate that parsed data has the expected structure
+        if (parsed && typeof parsed === 'object' && Array.isArray(parsed.items)) {
+          return parsed;
+        }
+        // If data is corrupted, clear it and return null
+        console.warn('Corrupted cart data detected, clearing localStorage');
+        this.clear();
+        return null;
       }
       return null;
     } catch (error) {
-      throw new Error(`Failed to load cart from localStorage: ${error}`);
+      // If parsing fails, clear corrupted data and return null instead of throwing
+      console.warn('Failed to load cart from localStorage, clearing corrupted data:', error);
+      try {
+        this.clear();
+      } catch (clearError) {
+        // Ignore clear errors
+      }
+      return null;
     }
   }
 

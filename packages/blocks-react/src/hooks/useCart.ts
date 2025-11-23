@@ -8,11 +8,42 @@ import { createCartManager, type CartManager, type CartState, type Product, type
  */
 export function useCart(options?: CartManagerOptions) {
   const [state, setState] = useState<CartState>(() => {
-    const manager = createCartManager(options);
-    return manager.getState();
+    try {
+      const manager = createCartManager({
+        ...options,
+        onError: (error) => {
+          // Log error but don't throw - allow component to render with empty state
+          console.error('Cart error:', error);
+          options?.onError?.(error);
+        },
+      });
+      return manager.getState();
+    } catch (error) {
+      // If initialization fails, return empty state
+      console.error('Failed to initialize cart:', error);
+      return {
+        items: [],
+        total: 0,
+        itemCount: 0,
+      };
+    }
   });
 
-  const [manager] = useState<CartManager>(() => createCartManager(options));
+  const [manager] = useState<CartManager>(() => {
+    try {
+      return createCartManager({
+        ...options,
+        onError: (error) => {
+          console.error('Cart error:', error);
+          options?.onError?.(error);
+        },
+      });
+    } catch (error) {
+      console.error('Failed to create cart manager:', error);
+      // Return a manager with no persistence as fallback
+      return createCartManager({ persist: false });
+    }
+  });
 
   useEffect(() => {
     const unsubscribe = manager.subscribe((newState) => {
