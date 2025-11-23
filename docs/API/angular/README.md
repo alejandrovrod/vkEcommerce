@@ -496,3 +496,4 @@ export class ShoppingCartComponent {
 - [React API](./react/README.md) - Para referencia de funcionalidades equivalentes
 
 
+
