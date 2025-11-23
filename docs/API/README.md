@@ -66,16 +66,16 @@ Servicios y componentes para Angular 21+.
 ### Por Funcionalidad
 
 #### Carrito de Compras
-- **Core**: `createCartManager`, `CartManager`, `CartStore`
-- **React**: `useCart`, `<CartView>`, `<CartItem>`, `<CartSummary>`
-- **Vue**: `useCart()`, `<CartView>`, `<CartItem>`, `<CartSummary>`
-- **Angular**: `CartService`, `<vk-cart-view>`, `<vk-cart-item>`, `<vk-cart-summary>`
+- **Core**: `createCartManager`, `CartManager`, `CartStore`, `CartSync`, `CartHistory`
+- **React**: `useCart`, `useCartSync`, `useCartHistory`, `<CartView>`, `<CartItem>`, `<CartSummary>`, `<CartHistoryView>`
+- **Vue**: `useCart()`, `useCartSync()`, `useCartHistory()`, `<CartView>`, `<CartItem>`, `<CartSummary>`, `<CartHistoryView>`
+- **Angular**: `CartService`, `CartSyncService`, `CartHistoryService`, `<vk-cart-view>`, `<vk-cart-item>`, `<vk-cart-summary>`, `<vk-cart-history-view>`
 
 #### Productos
 - **Core**: `createProductManager`, `ProductManager`, `ProductSearch`
-- **React**: `useProducts`, `useProductSearch`, `<ProductCard>`, `<ProductList>`
-- **Vue**: `useProducts()`, `useProductSearch()`, `<ProductCard>`
-- **Angular**: `ProductService`, `ProductSearchService`, `<vk-product-card>`, `<vk-product-list>`
+- **React**: `useProducts`, `useProductSearch`, `<ProductCard>`, `<ProductList>`, `<ProductSearch>`, `<ProductFilters>`
+- **Vue**: `useProducts()`, `useProductSearch()`, `<ProductCard>`, `<ProductList>`, `<ProductSearch>`, `<ProductFilters>`
+- **Angular**: `ProductService`, `ProductSearchService`, `<vk-product-card>`, `<vk-product-list>`, `<vk-product-search>`, `<vk-product-filters>`
 
 #### Lista de Deseos
 - **Core**: `createWishlistManager`, `WishlistManager`
@@ -85,15 +85,15 @@ Servicios y componentes para Angular 21+.
 
 #### Checkout
 - **Core**: `createCheckoutManager`, `CheckoutManager`
-- **React**: `useCheckout`, `<CheckoutForm>`, `<MercadoPagoButton>`
-- **Vue**: `useCheckout()`, `<CheckoutForm>`
-- **Angular**: `CheckoutService`, `<vk-checkout-form>`, `<vk-mercadopago-button>`
+- **React**: `useCheckout`, `<CheckoutForm>`, `<PaymentMethodSelector>`, `<MercadoPagoButton>`
+- **Vue**: `useCheckout()`, `<CheckoutForm>`, `<PaymentMethodSelector>`, `<MercadoPagoButton>`
+- **Angular**: `CheckoutService`, `<vk-checkout-form>`, `<vk-payment-method-selector>`, `<vk-mercadopago-button>`
 
 #### Envíos
 - **Core**: `createShippingManager`, `ShippingManager`
-- **React**: `useShipping`, `<ShippingCalculator>`, `<AddressForm>`
-- **Vue**: `useShipping()`, `<ShippingCalculator>`, `<AddressForm>`
-- **Angular**: `ShippingService`, `<vk-shipping-calculator>`, `<vk-address-form>`
+- **React**: `useShipping`, `<ShippingCalculator>`, `<ShippingOptions>`, `<AddressForm>`
+- **Vue**: `useShipping()`, `<ShippingCalculator>`, `<ShippingOptions>`, `<AddressForm>`
+- **Angular**: `ShippingService`, `<vk-shipping-calculator>`, `<vk-shipping-options>`, `<vk-address-form>`
 
 ---
 

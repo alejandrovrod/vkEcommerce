@@ -1,11 +1,13 @@
 import { Link, useLocation, Outlet } from 'react-router-dom';
-import { useCart } from '@alejandrovrod/blocks-react';
-import { useWishlist } from '@alejandrovrod/blocks-react';
+import { useCart, useWishlist, useCartSync } from '@alejandrovrod/blocks-react';
 
 export default function Layout() {
   const location = useLocation();
   const { itemCount } = useCart({ persist: true });
   const { items: wishlistItems } = useWishlist();
+  
+  // Activate cart synchronization between tabs
+  useCartSync();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -52,7 +54,7 @@ export default function Layout() {
               <Link
                 to="/cart"
                 className={`relative px-3 py-2 rounded-md text-sm font-medium ${
-                  isActive('/cart')
+                  isActive('/cart') || isActive('/cart/history')
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
@@ -63,6 +65,16 @@ export default function Layout() {
                     {itemCount}
                   </span>
                 )}
+              </Link>
+              <Link
+                to="/cart/history"
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  isActive('/cart/history')
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                History
               </Link>
             </div>
           </div>

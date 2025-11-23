@@ -1,11 +1,25 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CheckoutForm, useCart, ShippingCalculator } from '@alejandrovrod/blocks-react';
+import {
+  CheckoutForm,
+  useCart,
+  ShippingCalculator,
+  PaymentMethodSelector,
+  MercadoPagoButton,
+  AddressForm,
+  ShippingOptions,
+} from '@alejandrovrod/blocks-react';
+import type { ShippingRate } from '@alejandrovrod/blocks-core';
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
   const { total, itemCount, items, clear } = useCart({ persist: true });
   const [checkoutComplete, setCheckoutComplete] = useState(false);
+  const [selectedShippingRate, setSelectedShippingRate] = useState<ShippingRate | null>(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('');
+  
+  // Mercado Pago public key (en producción debería venir de variables de entorno)
+  const MERCADO_PAGO_PUBLIC_KEY = 'TEST-12345678-1234-1234-1234-123456789012';
 
   if (itemCount === 0) {
     return (
@@ -71,52 +85,154 @@ export default function CheckoutPage() {
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                     Shipping Address
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      placeholder="Street Address"
-                      value={shippingAddress.street || ''}
-                      onChange={(e) => onShippingChange({ ...shippingAddress, street: e.target.value })}
-                      className="vkecom-checkout-field"
-                    />
-                    <input
-                      type="text"
-                      placeholder="City"
-                      value={shippingAddress.city || ''}
-                      onChange={(e) => onShippingChange({ ...shippingAddress, city: e.target.value })}
-                      className="vkecom-checkout-field"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Postal Code"
-                      value={shippingAddress.postalCode || ''}
-                      onChange={(e) => onShippingChange({ ...shippingAddress, postalCode: e.target.value })}
-                      className="vkecom-checkout-field"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Country"
-                      value={shippingAddress.country || ''}
-                      onChange={(e) => onShippingChange({ ...shippingAddress, country: e.target.value })}
-                      className="vkecom-checkout-field"
-                    />
-                  </div>
+                  <AddressForm
+                    initialAddress={shippingAddress}
+                    onSubmit={(address) => {
+                      onShippingChange(address);
+                    }}
+                    renderFields={({ address, onChange: onAddressChange, errors }) => {
+                      // Sync address changes with CheckoutForm
+                      const handleChange = (newAddress: Partial<typeof address>) => {
+                        const updatedAddress = { ...address, ...newAddress };
+                        onAddressChange(updatedAddress);
+                        onShippingChange(updatedAddress as any);
+                      };
+                      
+                      return (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Recipient Name"
+                            value={address.recipientName || ''}
+                            onChange={(e) => handleChange({ recipientName: e.target.value })}
+                            className={`vkecom-checkout-field ${errors.some(e => e.field === 'recipientName') ? 'border-red-500' : ''}`}
+                          />
+                          {errors.find(e => e.field === 'recipientName') && (
+                            <p className="text-red-500 text-sm mt-1">{errors.find(e => e.field === 'recipientName')?.message}</p>
+                          )}
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Street Address"
+                            value={address.street || ''}
+                            onChange={(e) => handleChange({ street: e.target.value })}
+                            className={`vkecom-checkout-field ${errors.some(e => e.field === 'street') ? 'border-red-500' : ''}`}
+                          />
+                          {errors.find(e => e.field === 'street') && (
+                            <p className="text-red-500 text-sm mt-1">{errors.find(e => e.field === 'street')?.message}</p>
+                          )}
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="City"
+                            value={address.city || ''}
+                            onChange={(e) => handleChange({ city: e.target.value })}
+                            className={`vkecom-checkout-field ${errors.some(e => e.field === 'city') ? 'border-red-500' : ''}`}
+                          />
+                          {errors.find(e => e.field === 'city') && (
+                            <p className="text-red-500 text-sm mt-1">{errors.find(e => e.field === 'city')?.message}</p>
+                          )}
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Postal Code"
+                            value={address.postalCode || ''}
+                            onChange={(e) => handleChange({ postalCode: e.target.value })}
+                            className={`vkecom-checkout-field ${errors.some(e => e.field === 'postalCode') ? 'border-red-500' : ''}`}
+                          />
+                          {errors.find(e => e.field === 'postalCode') && (
+                            <p className="text-red-500 text-sm mt-1">{errors.find(e => e.field === 'postalCode')?.message}</p>
+                          )}
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Country"
+                            value={address.country || ''}
+                            onChange={(e) => handleChange({ country: e.target.value })}
+                            className={`vkecom-checkout-field ${errors.some(e => e.field === 'country') ? 'border-red-500' : ''}`}
+                          />
+                          {errors.find(e => e.field === 'country') && (
+                            <p className="text-red-500 text-sm mt-1">{errors.find(e => e.field === 'country')?.message}</p>
+                          )}
+                        </div>
+                        {address.phone && (
+                          <div>
+                            <input
+                              type="tel"
+                              placeholder="Phone (optional)"
+                              value={address.phone || ''}
+                              onChange={(e) => handleChange({ phone: e.target.value })}
+                              className="vkecom-checkout-field"
+                            />
+                          </div>
+                        )}
+                      </div>
+                      );
+                    }}
+                  />
                 </div>
 
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                     Payment Method
                   </h2>
-                  <select
-                    value={paymentMethod.method || ''}
-                    onChange={(e) => onPaymentChange({ ...paymentMethod, method: e.target.value as any })}
-                    className="vkecom-checkout-field"
-                  >
-                    <option value="">Select payment method</option>
-                    <option value="credit_card">Credit Card</option>
-                    <option value="debit_card">Debit Card</option>
-                    <option value="mercado_pago">Mercado Pago</option>
-                  </select>
+                  <PaymentMethodSelector
+                    value={paymentMethod.method ? { method: paymentMethod.method } : undefined}
+                    onChange={(method) => {
+                      setSelectedPaymentMethod(method.method || '');
+                      onPaymentChange(method);
+                    }}
+                    renderMethod={(method, selected, onSelect) => (
+                      <label
+                        className={`flex items-center gap-3 p-4 border-2 rounded-lg cursor-pointer transition-colors ${
+                          selected
+                            ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
+                            : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="payment-method"
+                          checked={selected}
+                          onChange={onSelect}
+                          className="w-4 h-4 text-blue-600"
+                        />
+                        <span className="text-gray-900 dark:text-white font-medium">
+                          {method === 'credit_card' && '💳 Credit Card'}
+                          {method === 'debit_card' && '💳 Debit Card'}
+                          {method === 'bank_transfer' && '🏦 Bank Transfer'}
+                          {method === 'cash' && '💵 Cash'}
+                          {method === 'digital_wallet' && '📱 Digital Wallet'}
+                          {method === 'mercado_pago' && '🛒 Mercado Pago'}
+                        </span>
+                      </label>
+                    )}
+                    className="space-y-2"
+                  />
+                  
+                  {selectedPaymentMethod === 'mercado_pago' && (
+                    <div className="mt-4">
+                      <MercadoPagoButton
+                        publicKey={MERCADO_PAGO_PUBLIC_KEY}
+                        label="Pay with Mercado Pago"
+                        onSuccess={(paymentId) => {
+                          console.log('Mercado Pago payment successful:', paymentId);
+                          clear();
+                          setCheckoutComplete(true);
+                        }}
+                        onError={(error) => {
+                          console.error('Mercado Pago error:', error);
+                          alert(`Payment error: ${error.message}`);
+                        }}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded transition-colors"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -147,10 +263,16 @@ export default function CheckoutPage() {
                 <span>Tax (10%)</span>
                 <span>${(total * 0.1).toFixed(2)}</span>
               </div>
+              {selectedShippingRate && (
+                <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                  <span>Shipping ({selectedShippingRate.option.name})</span>
+                  <span>${selectedShippingRate.cost.toFixed(2)}</span>
+                </div>
+              )}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                 <div className="flex justify-between text-xl font-bold text-gray-900 dark:text-white">
                   <span>Total</span>
-                  <span>${(total * 1.1).toFixed(2)}</span>
+                  <span>${((total * 1.1) + (selectedShippingRate?.cost || 0)).toFixed(2)}</span>
                 </div>
               </div>
             </div>
@@ -189,6 +311,65 @@ export default function CheckoutPage() {
               })}
               onRatesCalculated={(rates) => {
                 console.log('Shipping rates calculated:', rates);
+                // Auto-select cheapest rate
+                if (rates.length > 0 && !selectedShippingRate) {
+                  const cheapest = rates.reduce((prev, current) => 
+                    prev.cost < current.cost ? prev : current
+                  );
+                  setSelectedShippingRate(cheapest);
+                }
+              }}
+              renderRates={({ rates, loading, onSelect }) => {
+                if (loading) {
+                  return <p className="text-gray-600 dark:text-gray-400">Calculating shipping...</p>;
+                }
+                if (rates.length === 0) {
+                  return null;
+                }
+                return (
+                  <div className="mt-4">
+                    <ShippingOptions
+                      rates={rates}
+                      selectedRateId={selectedShippingRate?.option.id}
+                      onSelect={(rate) => {
+                        setSelectedShippingRate(rate);
+                        onSelect(rate);
+                      }}
+                      renderRate={(rate, selected, onSelect) => (
+                        <label
+                          className={`block p-4 border-2 rounded-lg cursor-pointer transition-colors mb-2 ${
+                            selected
+                              ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
+                              : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
+                          }`}
+                        >
+                          <input
+                            type="radio"
+                            name="shipping-option"
+                            checked={selected}
+                            onChange={onSelect}
+                            className="mr-2"
+                          />
+                          <div className="flex justify-between items-center">
+                            <div>
+                              <div className="font-semibold text-gray-900 dark:text-white">
+                                {rate.option.name}
+                              </div>
+                              {rate.estimatedDays && (
+                                <div className="text-sm text-gray-600 dark:text-gray-400">
+                                  {rate.estimatedDays.min}-{rate.estimatedDays.max} days
+                                </div>
+                              )}
+                            </div>
+                            <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                              ${rate.cost.toFixed(2)} {rate.currency}
+                            </div>
+                          </div>
+                        </label>
+                      )}
+                    />
+                  </div>
+                );
               }}
             />
           </div>

@@ -129,5 +129,30 @@ body {
   @apply w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white mb-2;
 }
 
+/* Product Filters Styles */
+.vkecom-product-filters {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 space-y-6;
+}
+
+.vkecom-product-filters-section {
+  @apply border-b border-gray-200 dark:border-gray-700 pb-4 last:border-b-0 last:pb-0;
+}
+
+.vkecom-product-filters-section h3 {
+  @apply text-lg font-semibold text-gray-900 dark:text-white mb-3;
+}
+
+.vkecom-product-filters-input {
+  @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm mb-2;
+}
+
+.vkecom-product-filters-checkbox {
+  @apply flex items-center gap-2 text-gray-700 dark:text-gray-300 text-sm cursor-pointer py-1;
+}
+
+.vkecom-product-filters-checkbox input[type="checkbox"] {
+  @apply h-4 w-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-blue-500;
+}
+
 
 

@@ -324,6 +324,61 @@ Componente para mostrar el resumen del carrito.
 
 ---
 
+### CartHistoryViewComponent
+
+Componente para mostrar el historial del carrito.
+
+#### Selector
+
+```html
+<vk-cart-history-view></vk-cart-history-view>
+```
+
+#### Inputs
+
+| Input | Tipo | Requerido | Default | Descripción |
+|-------|------|-----------|---------|-------------|
+| `className` | `string` | No | - | Clases CSS adicionales |
+| `historyOptions` | `CartHistoryOptions` | No | - | Opciones del historial |
+| `emptyMessage` | `string` | No | `'No cart history'` | Mensaje cuando no hay historial |
+
+#### Outputs
+
+| Output | Tipo | Descripción |
+|--------|------|-------------|
+| `restore` | `EventEmitter<CartHistoryEntry>` | Emitido cuando se restaura un carrito |
+
+#### Ejemplo
+
+```typescript
+import { Component } from '@angular/core';
+import { CartHistoryViewComponent, CartHistoryService } from '@alejandrovrod/blocks-angular';
+import type { CartHistoryEntry } from '@alejandrovrod/blocks-core';
+
+@Component({
+  selector: 'app-cart-history',
+  standalone: true,
+  imports: [CartHistoryViewComponent],
+  template: `
+    <vk-cart-history-view
+      [historyOptions]="{ persist: true, maxEntries: 10 }"
+      (restore)="handleRestore($event)"
+      emptyMessage="No hay historial de carritos">
+    </vk-cart-history-view>
+  `
+})
+export class CartHistoryComponent {
+  constructor(public historyService: CartHistoryService) {}
+
+  handleRestore(entry: CartHistoryEntry): void {
+    console.log('Restaurando carrito:', entry);
+    // El servicio ya restaura automáticamente
+  }
+}
+```
+
+---
+
 ### ProductListComponent
 
 Componente para mostrar una lista de productos.
@@ -382,6 +437,179 @@ Componente para mostrar la lista de deseos.
 
 ---
 
+### CheckoutFormComponent
+
+Componente para el formulario de checkout.
+
+#### Selector
+
+```html
+<vk-checkout-form></vk-checkout-form>
+```
+
+#### Inputs
+
+| Input | Tipo | Requerido | Descripción |
+|-------|------|-----------|-------------|
+| `subtotal` | `number` | Sí | Subtotal del carrito |
+| `cartId` | `string` | No | ID del carrito |
+| `className` | `string` | No | Clases CSS adicionales |
+
+#### Outputs
+
+| Output | Tipo | Descripción |
+|--------|------|-------------|
+| `complete` | `EventEmitter<string>` | Emitido cuando el checkout se completa (sessionId) |
+| `error` | `EventEmitter<Error>` | Emitido cuando hay un error |
+
+#### Ejemplo
+
+```typescript
+import { Component } from '@angular/core';
+import { CheckoutFormComponent, CartService } from '@alejandrovrod/blocks-angular';
+
+@Component({
+  selector: 'app-checkout',
+  standalone: true,
+  imports: [CheckoutFormComponent],
+  template: `
+    <vk-checkout-form
+      [subtotal]="cartService.total()"
+      (complete)="handleComplete($event)"
+      (error)="handleError($event)">
+    </vk-checkout-form>
+  `
+})
+export class CheckoutComponent {
+  constructor(public cartService: CartService) {}
+
+  handleComplete(sessionId: string): void {
+    console.log('Checkout completado:', sessionId);
+  }
+
+  handleError(error: Error): void {
+    console.error('Error en checkout:', error);
+  }
+}
+```
+
+---
+
+### PaymentMethodSelectorComponent
+
+Componente para seleccionar método de pago.
+
+#### Selector
+
+```html
+<vk-payment-method-selector></vk-payment-method-selector>
+```
+
+#### Inputs
+
+| Input | Tipo | Requerido | Default | Descripción |
+|-------|------|-----------|---------|-------------|
+| `value` | `PaymentMethodDetails` | No | - | Método seleccionado |
+| `methods` | `PaymentMethod[]` | No | `['credit_card', 'debit_card', 'bank_transfer', 'cash', 'digital_wallet', 'mercado_pago']` | Métodos disponibles |
+| `className` | `string` | No | - | Clases CSS adicionales |
+
+#### Outputs
+
+| Output | Tipo | Descripción |
+|--------|------|-------------|
+| `change` | `EventEmitter<PaymentMethodDetails>` | Emitido cuando se selecciona un método |
+
+#### Ejemplo
+
+```typescript
+import { Component, signal } from '@angular/core';
+import { PaymentMethodSelectorComponent } from '@alejandrovrod/blocks-angular';
+import type { PaymentMethodDetails } from '@alejandrovrod/blocks-core';
+
+@Component({
+  selector: 'app-payment',
+  standalone: true,
+  imports: [PaymentMethodSelectorComponent],
+  template: `
+    <vk-payment-method-selector
+      [value]="selectedMethod()"
+      [methods]="['credit_card', 'mercado_pago', 'bank_transfer']"
+      (change)="handleMethodChange($event)">
+    </vk-payment-method-selector>
+  `
+})
+export class PaymentComponent {
+  selectedMethod = signal<PaymentMethodDetails | undefined>(undefined);
+
+  handleMethodChange(method: PaymentMethodDetails): void {
+    this.selectedMethod.set(method);
+  }
+}
+```
+
+---
+
+### MercadoPagoButtonComponent
+
+Componente para botón de pago con Mercado Pago.
+
+#### Selector
+
+```html
+<vk-mercadopago-button></vk-mercadopago-button>
+```
+
+#### Inputs
+
+| Input | Tipo | Requerido | Descripción |
+|-------|------|-----------|-------------|
+| `publicKey` | `string` | Sí | Clave pública de Mercado Pago |
+| `preferenceId` | `string` | No | ID de preferencia (opcional) |
+| `className` | `string` | No | Clases CSS adicionales |
+| `label` | `string` | No | `'Pay with Mercado Pago'` | Texto del botón |
+
+#### Outputs
+
+| Output | Tipo | Descripción |
+|--------|------|-------------|
+| `success` | `EventEmitter<string>` | Emitido cuando el pago es exitoso (paymentId) |
+| `error` | `EventEmitter<Error>` | Emitido cuando hay un error |
+
+#### Ejemplo
+
+```typescript
+import { Component } from '@angular/core';
+import { MercadoPagoButtonComponent } from '@alejandrovrod/blocks-angular';
+
+@Component({
+  selector: 'app-mercadopago',
+  standalone: true,
+  imports: [MercadoPagoButtonComponent],
+  template: `
+    <vk-mercadopago-button
+      publicKey="YOUR_PUBLIC_KEY"
+      [preferenceId]="preferenceId"
+      label="Pagar con Mercado Pago"
+      (success)="handleSuccess($event)"
+      (error)="handleError($event)">
+    </vk-mercadopago-button>
+  `
+})
+export class MercadoPagoComponent {
+  preferenceId?: string;
+
+  handleSuccess(paymentId: string): void {
+    console.log('Pago exitoso:', paymentId);
+  }
+
+  handleError(error: Error): void {
+    console.error('Error en pago:', error);
+  }
+}
+```
+
+---
+
 ### ShippingCalculatorComponent
 
 Componente para calcular costos de envío.
@@ -404,6 +632,34 @@ Componente para calcular costos de envío.
 | Output | Tipo | Descripción |
 |--------|------|-------------|
 | `ratesCalculated` | `EventEmitter<ShippingRate[]>` | Emitido con las tarifas calculadas |
+
+#### Ejemplo
+
+```typescript
+import { Component, signal } from '@angular/core';
+import { ShippingCalculatorComponent } from '@alejandrovrod/blocks-angular';
+import type { ShippingItem, ShippingRate } from '@alejandrovrod/blocks-core';
+
+@Component({
+  selector: 'app-shipping',
+  standalone: true,
+  imports: [ShippingCalculatorComponent],
+  template: `
+    <vk-shipping-calculator
+      [items]="shippingItems()"
+      (ratesCalculated)="handleRates($event)">
+    </vk-shipping-calculator>
+  `
+})
+export class ShippingComponent {
+  shippingItems = signal<ShippingItem[]>([]);
+  rates = signal<ShippingRate[]>([]);
+
+  handleRates(rates: ShippingRate[]): void {
+    this.rates.set(rates);
+  }
+}
+```
 
 ---
 
@@ -431,6 +687,36 @@ Componente para seleccionar opciones de envío.
 |--------|------|-------------|
 | `select` | `EventEmitter<ShippingRate>` | Emitido cuando se selecciona una tarifa |
 
+#### Ejemplo
+
+```typescript
+import { Component, signal } from '@angular/core';
+import { ShippingOptionsComponent } from '@alejandrovrod/blocks-angular';
+import type { ShippingRate } from '@alejandrovrod/blocks-core';
+
+@Component({
+  selector: 'app-shipping-options',
+  standalone: true,
+  imports: [ShippingOptionsComponent],
+  template: `
+    <vk-shipping-options
+      [rates]="rates()"
+      [selectedRateId]="selectedRateId()"
+      (select)="handleSelect($event)">
+    </vk-shipping-options>
+  `
+})
+export class ShippingOptionsComponent {
+  rates = signal<ShippingRate[]>([]);
+  selectedRateId = signal<string | undefined>(undefined);
+
+  handleSelect(rate: ShippingRate): void {
+    this.selectedRateId.set(rate.option.id);
+    console.log('Tarifa seleccionada:', rate);
+  }
+}
+```
+
 ---
 
 ### AddressFormComponent
@@ -456,6 +742,37 @@ Componente para formulario de dirección.
 | Output | Tipo | Descripción |
 |--------|------|-------------|
 | `submit` | `EventEmitter<ShippingAddress>` | Emitido cuando se envía el formulario |
+
+#### Ejemplo
+
+```typescript
+import { Component } from '@angular/core';
+import { AddressFormComponent } from '@alejandrovrod/blocks-angular';
+import type { ShippingAddress } from '@alejandrovrod/blocks-core';
+
+@Component({
+  selector: 'app-address',
+  standalone: true,
+  imports: [AddressFormComponent],
+  template: `
+    <vk-address-form
+      [initialAddress]="initialAddress"
+      [showErrors]="true"
+      (submit)="handleSubmit($event)">
+    </vk-address-form>
+  `
+})
+export class AddressComponent {
+  initialAddress?: Partial<ShippingAddress> = {
+    city: 'Buenos Aires',
+    country: 'Argentina'
+  };
+
+  handleSubmit(address: ShippingAddress): void {
+    console.log('Dirección enviada:', address);
+  }
+}
+```
 
 ---
 

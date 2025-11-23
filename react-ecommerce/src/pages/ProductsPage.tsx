@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ProductList,
   ProductCard,
@@ -12,6 +13,7 @@ import { mockProducts } from '../data/mockProducts';
 import type { ProductFilter } from '@alejandrovrod/blocks-core';
 
 export default function ProductsPage() {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQueryState] = useState('');
   const [filters, setFiltersState] = useState<ProductFilter>({});
 
@@ -92,7 +94,10 @@ export default function ProductsPage() {
                   product={product}
                   className="h-full"
                   renderImage={(product) => (
-                    <div className="vkecom-product-image">
+                    <div
+                      className="vkecom-product-image cursor-pointer"
+                      onClick={() => navigate(`/products/${product.id}`)}
+                    >
                       {product.image ? (
                         <img
                           src={product.image}
@@ -107,7 +112,12 @@ export default function ProductsPage() {
                     </div>
                   )}
                   renderTitle={(product) => (
-                    <h3 className="vkecom-product-title">{product.name}</h3>
+                    <h3
+                      className="vkecom-product-title cursor-pointer hover:text-blue-600 dark:hover:text-blue-400"
+                      onClick={() => navigate(`/products/${product.id}`)}
+                    >
+                      {product.name}
+                    </h3>
                   )}
                   renderPrice={(product) => (
                     <div className="vkecom-product-price">
