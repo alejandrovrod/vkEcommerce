@@ -308,3 +308,4 @@ function handleCheckout() {
 - [Core API](./core/README.md)
 - [React API](./react/README.md) - Para referencia de props equivalentes
 
+

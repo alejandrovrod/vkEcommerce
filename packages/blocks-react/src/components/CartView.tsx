@@ -70,7 +70,9 @@ export function CartView({
 
       {items.length === 0 ? (
         <div className="vkecom-cart-empty">
-          {renderEmpty ? renderEmpty() : <p>{emptyMessage}</p>}
+          {renderEmpty ? renderEmpty() : (
+            typeof emptyMessage === 'string' ? <p>{emptyMessage}</p> : emptyMessage
+          )}
         </div>
       ) : (
         <>

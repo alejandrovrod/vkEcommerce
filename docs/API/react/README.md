@@ -947,3 +947,4 @@ function ProductCatalog() {
 - [Core API](./core/README.md) - Tipos y funciones del core
 - [Ejemplos Completos](./examples.md)
 
+
