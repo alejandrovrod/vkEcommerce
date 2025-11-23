@@ -3,7 +3,7 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { CartSync } from '@alejandrovrod/blocks-core';
+import { CartSync, CartStore } from '@alejandrovrod/blocks-core';
 import type { CartSyncOptions } from '@alejandrovrod/blocks-core';
 
 /**
@@ -15,7 +15,6 @@ export function useCartSync(options?: CartSyncOptions) {
   useEffect(() => {
     // Get the cart manager instance from the cart store
     if (!syncRef.current) {
-      const { CartStore } = require('@alejandrovrod/blocks-core');
       const store = CartStore.getInstance();
       syncRef.current = new CartSync(store, options);
       syncRef.current.initialize();
