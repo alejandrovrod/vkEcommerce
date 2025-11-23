@@ -3,14 +3,14 @@
  */
 
 import { useState, useCallback } from 'react';
-import { createShippingManager } from '@vk/blocks-core';
+import { createShippingManager } from '@alejandrovrod/blocks-core';
 import type {
   ShippingAddress,
   ShippingCalculationRequest,
   ShippingCalculationResult,
   ShippingManagerOptions,
   ShippingRate,
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 /**
  * Use shipping hook return type
@@ -53,7 +53,7 @@ export interface UseShippingReturn {
   /**
    * Get available shipping options
    */
-  getAvailableOptions: () => import('@vk/blocks-core').ShippingOption[];
+  getAvailableOptions: () => import('@alejandrovrod/blocks-core').ShippingOption[];
   
   /**
    * Current shipping address
@@ -63,7 +63,7 @@ export interface UseShippingReturn {
   /**
    * Selected shipping option
    */
-  selectedOption: import('@vk/blocks-core').ShippingOption | null;
+  selectedOption: import('@alejandrovrod/blocks-core').ShippingOption | null;
   
   /**
    * Set shipping address
@@ -85,7 +85,7 @@ export function useShipping(options?: ShippingManagerOptions): UseShippingReturn
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [address, setAddress] = useState<ShippingAddress | null>(null);
-  const [selectedOption, setSelectedOption] = useState<import('@vk/blocks-core').ShippingOption | null>(null);
+  const [selectedOption, setSelectedOption] = useState<import('@alejandrovrod/blocks-core').ShippingOption | null>(null);
 
   const calculate = useCallback(
     async (request: ShippingCalculationRequest) => {
@@ -169,4 +169,5 @@ export function useShipping(options?: ShippingManagerOptions): UseShippingReturn
     selectShippingOption,
   };
 }
+
 

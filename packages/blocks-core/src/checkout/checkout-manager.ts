@@ -456,3 +456,7 @@ export function createCheckoutManager(options?: CheckoutOptions): CheckoutManage
   return new CheckoutManager(options);
 }
 
+
+
+
+

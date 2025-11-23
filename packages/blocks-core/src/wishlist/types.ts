@@ -63,3 +63,7 @@ export interface WishlistOptions {
  */
 export type WishlistStateChangeCallback = (state: WishlistState) => void;
 
+
+
+
+

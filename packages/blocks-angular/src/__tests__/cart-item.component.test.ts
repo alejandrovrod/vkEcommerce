@@ -2,8 +2,8 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ComponentFixture, TestBed, NO_ERRORS_SCHEMA } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { CartItemComponent } from '../components/cart-item.component';
-import { CartStore } from '@vk/blocks-core';
-import type { CartItem as CartItemType } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { CartItem as CartItemType } from '@alejandrovrod/blocks-core';
 import { loadComponentTemplate } from './test-helpers';
 
 const mockCartItem: CartItemType = {
@@ -132,3 +132,4 @@ describe.skip('CartItemComponent', () => {
     expect(item?.getAttribute('itemtype')).toBe('https://schema.org/Product');
   });
 });
+

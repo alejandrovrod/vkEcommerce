@@ -4,7 +4,7 @@
 
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { useProductSearch } from './useProductSearch';
-import type { SearchOptions } from '@vk/blocks-core';
+import type { SearchOptions } from '@alejandrovrod/blocks-core';
 
 export interface ProductSearchProps {
   /**
@@ -104,4 +104,5 @@ export function ProductSearch({
     </form>
   );
 }
+
 

@@ -4,7 +4,7 @@
 
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-product-list',
@@ -25,3 +25,4 @@ export class ProductListComponent {
     return `$${price.toFixed(2)}`;
   }
 }
+

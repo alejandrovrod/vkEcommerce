@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useWishlist } from './useWishlist';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 interface Props {
   product: Product;
@@ -43,4 +43,5 @@ const handleClick = () => {
   }
 };
 </script>
+
 

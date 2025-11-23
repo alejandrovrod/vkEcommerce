@@ -2,8 +2,8 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ProductCard } from '../components/ProductCard';
-import { CartStore } from '@vk/blocks-core';
-import type { Product } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 describe('ProductCard', () => {
   beforeEach(() => {
@@ -155,4 +155,5 @@ describe('ProductCard', () => {
     expect(button).toBeInTheDocument();
   });
 });
+
 

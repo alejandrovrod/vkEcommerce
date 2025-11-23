@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ShippingService } from './shipping.service';
-import type { ShippingAddress, ShippingCalculationRequest } from '@vk/blocks-core';
+import type { ShippingAddress, ShippingCalculationRequest } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-shipping-calculator',
@@ -26,7 +26,7 @@ export class ShippingCalculatorComponent {
     value?: number;
   }>;
   @Input() className?: string;
-  @Output() ratesCalculated = new EventEmitter<import('@vk/blocks-core').ShippingRate[]>();
+  @Output() ratesCalculated = new EventEmitter<import('@alejandrovrod/blocks-core').ShippingRate[]>();
 
   address = signal<Partial<ShippingAddress>>({});
 
@@ -59,3 +59,4 @@ export class ShippingCalculatorComponent {
     }
   }
 }
+

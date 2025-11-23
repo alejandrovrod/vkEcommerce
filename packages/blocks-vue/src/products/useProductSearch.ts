@@ -3,8 +3,8 @@
  */
 
 import { ref } from 'vue';
-import { ProductSearch } from '@vk/blocks-core';
-import type { Product, SearchOptions, SearchResult } from '@vk/blocks-core';
+import { ProductSearch } from '@alejandrovrod/blocks-core';
+import type { Product, SearchOptions, SearchResult } from '@alejandrovrod/blocks-core';
 
 /**
  * Use product search composable return type
@@ -76,4 +76,5 @@ export function useProductSearch(initialOptions?: SearchOptions): UseProductSear
 }
 
 import { readonly } from 'vue';
+
 

@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { WishlistService } from '../wishlist/wishlist.service';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 const mockProduct: Product = {
   id: 'prod-1',
@@ -20,7 +20,7 @@ describe('WishlistService', () => {
 
   beforeEach(() => {
     // Reset WishlistStore singleton
-    const { WishlistStore } = require('@vk/blocks-core');
+    const { WishlistStore } = require('@alejandrovrod/blocks-core');
     if (WishlistStore.resetInstance) {
       WishlistStore.resetInstance();
     }
@@ -79,4 +79,5 @@ describe('WishlistService', () => {
     expect(service.itemCount()).toBe(0);
   });
 });
+
 

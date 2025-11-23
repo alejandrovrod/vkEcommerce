@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PaymentMethodDetails, PaymentMethod } from '@vk/blocks-core';
+import type { PaymentMethodDetails, PaymentMethod } from '@alejandrovrod/blocks-core';
 
 interface Props {
   value?: PaymentMethodDetails;
@@ -50,4 +50,5 @@ const handleSelect = (method: PaymentMethod) => {
   props.onChange({ method });
 };
 </script>
+
 

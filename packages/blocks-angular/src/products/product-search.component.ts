@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProductSearchService } from './product-search.service';
-import type { SearchOptions } from '@vk/blocks-core';
+import type { SearchOptions } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-product-search',
@@ -41,4 +41,5 @@ export class ProductSearchComponent {
     });
   }
 }
+
 

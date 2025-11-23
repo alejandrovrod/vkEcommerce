@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useProductSearch } from './useProductSearch';
-import type { SearchOptions } from '@vk/blocks-core';
+import type { SearchOptions } from '@alejandrovrod/blocks-core';
 
 interface Props {
   initialQuery?: string;
@@ -41,4 +41,5 @@ const handleChange = (e: Event) => {
   localQuery.value = target.value;
 };
 </script>
+
 

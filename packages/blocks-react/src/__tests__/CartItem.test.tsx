@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CartItem } from '../components/CartItem';
-import type { CartItem as CartItemType } from '@vk/blocks-core';
+import type { CartItem as CartItemType } from '@alejandrovrod/blocks-core';
 
 const mockCartItem: CartItemType = {
   id: '1',
@@ -231,4 +231,5 @@ describe('CartItem', () => {
     expect(removeButton).toHaveTextContent('Delete Test Product');
   });
 });
+
 

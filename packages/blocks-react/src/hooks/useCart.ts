@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { createCartManager, type CartManager, type CartState, type Product, type CartManagerOptions } from '@vk/blocks-core';
+import { createCartManager, type CartManager, type CartState, type Product, type CartManagerOptions } from '@alejandrovrod/blocks-core';
 
 /**
  * Hook to manage cart state in React
@@ -57,4 +57,5 @@ export function useCart(options?: CartManagerOptions) {
     clear,
   };
 }
+
 

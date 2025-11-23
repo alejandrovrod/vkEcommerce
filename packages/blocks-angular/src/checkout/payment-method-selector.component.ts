@@ -4,7 +4,7 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import type { PaymentMethodDetails, PaymentMethod } from '@vk/blocks-core';
+import type { PaymentMethodDetails, PaymentMethod } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-payment-method-selector',
@@ -42,4 +42,5 @@ export class PaymentMethodSelectorComponent {
     this.change.emit({ method });
   }
 }
+
 

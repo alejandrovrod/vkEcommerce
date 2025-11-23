@@ -3,8 +3,8 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { createWishlistManager } from '@vk/blocks-core';
-import type { WishlistItem, WishlistState, WishlistOptions, Product } from '@vk/blocks-core';
+import { createWishlistManager } from '@alejandrovrod/blocks-core';
+import type { WishlistItem, WishlistState, WishlistOptions, Product } from '@alejandrovrod/blocks-core';
 
 /**
  * Use wishlist hook return type
@@ -125,4 +125,5 @@ export function useWishlist(options?: WishlistOptions): UseWishlistReturn {
     updateItemNotes,
   };
 }
+
 

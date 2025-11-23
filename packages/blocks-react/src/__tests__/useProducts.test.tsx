@@ -6,7 +6,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, waitFor } from '@testing-library/react';
 import { act } from 'react';
 import { useProducts } from '../products/useProducts';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 const mockProducts: Product[] = [
   {
@@ -162,4 +162,5 @@ describe('useProducts', () => {
     }, { timeout: 2000 });
   });
 });
+
 

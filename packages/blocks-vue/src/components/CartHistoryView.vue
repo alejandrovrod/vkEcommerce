@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { useCartHistory } from '../composables/useCartHistory';
-import type { CartHistoryEntry, CartHistoryOptions } from '@vk/blocks-core';
+import type { CartHistoryEntry, CartHistoryOptions } from '@alejandrovrod/blocks-core';
 
 interface Props {
   className?: string;
@@ -75,4 +75,5 @@ const handleRestore = (entry: CartHistoryEntry) => {
   }
 };
 </script>
+
 

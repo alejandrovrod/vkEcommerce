@@ -1,5 +1,5 @@
 {
-  "name": "@vk/blocks-vue",
+  "name": "@alejandrovrod/blocks-vue",
   "version": "0.1.0",
   "description": "Vue 3 composables and components for vkecomblocks",
   "main": "./dist/index.js",
@@ -26,7 +26,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "@vk/blocks-core": "workspace:*"
+    "@alejandrovrod/blocks-core": "workspace:*"
   },
   "devDependencies": {
     "@vue/test-utils": "^2.4.6",

@@ -4,7 +4,7 @@ import {
   type CartState,
   type Product,
   type CartManagerOptions,
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 /**
  * Composable to manage cart state in Vue 3
@@ -19,7 +19,7 @@ export function useCart(options?: CartManagerOptions) {
   const state = ref<CartState>(manager.getState());
 
   // Subscribe immediately to state changes
-  const unsubscribe = manager.subscribe((newState) => {
+  const unsubscribe = manager.subscribe((newState: CartState) => {
     state.value = newState;
   });
 
@@ -58,4 +58,5 @@ export function useCart(options?: CartManagerOptions) {
     clear,
   };
 }
+
 

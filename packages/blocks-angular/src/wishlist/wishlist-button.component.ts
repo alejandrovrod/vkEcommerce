@@ -5,7 +5,7 @@
 import { Component, Input, Output, EventEmitter, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WishlistService } from './wishlist.service';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-wishlist-button',
@@ -35,4 +35,5 @@ export class WishlistButtonComponent {
     }
   }
 }
+
 

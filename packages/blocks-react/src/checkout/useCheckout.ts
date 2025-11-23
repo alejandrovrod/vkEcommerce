@@ -3,7 +3,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { createCheckoutManager } from '@vk/blocks-core';
+import { createCheckoutManager } from '@alejandrovrod/blocks-core';
 import type {
   CheckoutSession,
   CheckoutOptions,
@@ -11,7 +11,7 @@ import type {
   BillingAddress,
   PaymentMethodDetails,
   PaymentResult,
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 /**
  * Checkout hook return type
@@ -302,4 +302,5 @@ export function useCheckout(options?: CheckoutOptions): UseCheckoutReturn {
     error,
   };
 }
+
 

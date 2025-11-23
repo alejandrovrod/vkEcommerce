@@ -5,7 +5,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartHistoryService } from '../services/cart-history.service';
-import type { CartHistoryEntry, CartHistoryOptions } from '@vk/blocks-core';
+import type { CartHistoryEntry, CartHistoryOptions } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-cart-history-view',
@@ -41,3 +41,4 @@ export class CartHistoryViewComponent {
     return `${entry.state.itemCount} items - ${this.formatPrice(entry.state.total)}`;
   }
 }
+

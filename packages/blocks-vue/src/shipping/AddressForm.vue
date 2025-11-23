@@ -85,7 +85,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import type { ShippingAddress } from '@vk/blocks-core';
+import type { ShippingAddress } from '@alejandrovrod/blocks-core';
 
 interface Props {
   initialAddress?: Partial<ShippingAddress>;
@@ -145,4 +145,5 @@ watch(() => props.initialAddress, (newAddress) => {
   }
 }, { deep: true });
 </script>
+
 

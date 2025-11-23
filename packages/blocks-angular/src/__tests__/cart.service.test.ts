@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { CartService } from '../services/cart.service';
-import { CartStore } from '@vk/blocks-core';
-import type { Product } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 describe('CartService', () => {
   let service: CartService;
@@ -153,4 +153,5 @@ describe('CartService', () => {
     expect(onStateChange).toHaveBeenCalled();
   });
 });
+
 

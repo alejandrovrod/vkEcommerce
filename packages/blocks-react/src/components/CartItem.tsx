@@ -1,5 +1,5 @@
 import React from 'react';
-import type { CartItem as CartItemType } from '@vk/blocks-core';
+import type { CartItem as CartItemType } from '@alejandrovrod/blocks-core';
 
 export interface CartItemProps {
   item: CartItemType;
@@ -158,4 +158,5 @@ export function CartItem({
     </div>
   );
 }
+
 

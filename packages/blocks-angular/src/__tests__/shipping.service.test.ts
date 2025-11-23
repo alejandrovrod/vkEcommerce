@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { ShippingService } from '../shipping/shipping.service';
-import type { ShippingAddress } from '@vk/blocks-core';
+import type { ShippingAddress } from '@alejandrovrod/blocks-core';
 
 const mockAddress: ShippingAddress = {
   street: 'Av. Corrientes 123',
@@ -72,4 +72,5 @@ describe('ShippingService', () => {
     expect(Array.isArray(rates.rates)).toBe(true);
   });
 });
+
 

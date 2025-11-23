@@ -36,7 +36,7 @@ importers:
 
   packages/blocks-angular:
     dependencies:
-      '@vk/blocks-core':
+      '@alejandrovrod/blocks-core':
         specifier: workspace:*
         version: link:../blocks-core
     devDependencies:
@@ -103,7 +103,7 @@ importers:
 
   packages/blocks-react:
     dependencies:
-      '@vk/blocks-core':
+      '@alejandrovrod/blocks-core':
         specifier: workspace:*
         version: link:../blocks-core
     devDependencies:
@@ -143,7 +143,7 @@ importers:
 
   packages/blocks-vue:
     dependencies:
-      '@vk/blocks-core':
+      '@alejandrovrod/blocks-core':
         specifier: workspace:*
         version: link:../blocks-core
     devDependencies:

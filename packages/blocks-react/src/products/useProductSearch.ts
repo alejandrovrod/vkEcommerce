@@ -3,8 +3,8 @@
  */
 
 import { useState, useCallback } from 'react';
-import { ProductSearch } from '@vk/blocks-core';
-import type { Product, SearchOptions, SearchResult } from '@vk/blocks-core';
+import { ProductSearch } from '@alejandrovrod/blocks-core';
+import type { Product, SearchOptions, SearchResult } from '@alejandrovrod/blocks-core';
 
 /**
  * Use product search hook return type
@@ -97,4 +97,5 @@ export function useProductSearch(initialOptions?: SearchOptions): UseProductSear
     clear,
   };
 }
+
 

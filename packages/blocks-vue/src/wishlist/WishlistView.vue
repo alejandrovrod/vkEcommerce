@@ -60,3 +60,4 @@ withDefaults(defineProps<Props>(), {
 const wishlist = useWishlist();
 </script>
 
+

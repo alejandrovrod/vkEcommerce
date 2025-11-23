@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import type { ProductFilter } from '@vk/blocks-core';
+import type { ProductFilter } from '@alejandrovrod/blocks-core';
 
 export interface ProductFiltersProps {
   /**
@@ -181,4 +181,5 @@ export function ProductFilters({
     </div>
   );
 }
+
 

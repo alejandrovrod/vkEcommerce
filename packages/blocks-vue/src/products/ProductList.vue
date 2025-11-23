@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 interface Props {
   products: Product[];
@@ -47,4 +47,5 @@ withDefaults(defineProps<Props>(), {
   emptyMessage: 'No products found',
 });
 </script>
+
 

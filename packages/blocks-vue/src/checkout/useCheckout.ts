@@ -3,7 +3,7 @@
  */
 
 import { ref, computed } from 'vue';
-import { createCheckoutManager } from '@vk/blocks-core';
+import { createCheckoutManager } from '@alejandrovrod/blocks-core';
 import type {
   CheckoutSession,
   CheckoutOptions,
@@ -11,7 +11,7 @@ import type {
   BillingAddress,
   PaymentMethodDetails,
   PaymentResult,
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 /**
  * Use checkout composable return type
@@ -280,4 +280,5 @@ export function useCheckout(options?: CheckoutOptions): UseCheckoutReturn {
 
 // Import readonly
 import { readonly } from 'vue';
+
 

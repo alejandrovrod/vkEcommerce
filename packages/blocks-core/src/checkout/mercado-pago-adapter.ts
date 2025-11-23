@@ -294,3 +294,7 @@ export class MercadoPagoAdapter extends BasePaymentProcessor {
   }
 }
 
+
+
+
+

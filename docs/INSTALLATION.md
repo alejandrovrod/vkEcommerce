@@ -1,6 +1,6 @@
 # Instalación de Paquetes
 
-Los paquetes de `@vk/blocks-*` están publicados en GitHub Packages. Para instalarlos en tu proyecto, necesitas configurar npm/pnpm para usar el registry de GitHub Packages.
+Los paquetes de `@alejandrovrod/blocks-*` están publicados en GitHub Packages. Para instalarlos en tu proyecto, necesitas configurar npm/pnpm para usar el registry de GitHub Packages.
 
 ## ¿Necesito un Token?
 
@@ -22,7 +22,7 @@ Si el repositorio es público, simplemente configura el registry:
 Crea un archivo `.npmrc` en la raíz de tu proyecto:
 
 ```
-@vk:registry=https://npm.pkg.github.com
+@alejandrovrod:registry=https://npm.pkg.github.com
 ```
 
 **¡Eso es todo!** No necesitas token.
@@ -42,7 +42,7 @@ Crea un archivo `.npmrc` en la raíz de tu proyecto:
 Crea o edita el archivo `.npmrc` en la raíz de tu proyecto:
 
 ```
-@vk:registry=https://npm.pkg.github.com
+@alejandrovrod:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=TU_TOKEN_AQUI
 ```
 
@@ -51,13 +51,13 @@ Crea o edita el archivo `.npmrc` en la raíz de tu proyecto:
 Crea o edita el archivo `.npmrc` en la raíz de tu proyecto:
 
 ```
-@vk:registry=https://npm.pkg.github.com
+@alejandrovrod:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=TU_TOKEN_AQUI
 ```
 
 **Nota:** Si el repositorio es público, puedes omitir la línea del token y solo usar:
 ```
-@vk:registry=https://npm.pkg.github.com
+@alejandrovrod:registry=https://npm.pkg.github.com
 ```
 
 #### Para yarn:
@@ -66,7 +66,7 @@ Crea o edita el archivo `.yarnrc.yml` en la raíz de tu proyecto:
 
 ```yaml
 npmScopes:
-  vk:
+  alejandrovrod:
     npmRegistryServer: "https://npm.pkg.github.com"
 ```
 
@@ -84,7 +84,7 @@ Y configura el token en `.npmrc`:
 
 En tu `.npmrc`:
 ```
-@vk:registry=https://npm.pkg.github.com
+@alejandrovrod:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
@@ -104,13 +104,13 @@ set GITHUB_TOKEN=tu_token_aqui
 
 Crea un `.npmrc.local` (agregado a `.gitignore`):
 ```
-@vk:registry=https://npm.pkg.github.com
+@alejandrovrod:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=tu_token_aqui
 ```
 
 Y en tu `.npmrc` principal:
 ```
-@vk:registry=https://npm.pkg.github.com
+@alejandrovrod:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
@@ -121,31 +121,31 @@ Una vez configurado el registry, puedes instalar los paquetes normalmente:
 ### React
 
 ```bash
-npm install @vk/blocks-core @vk/blocks-react
+npm install @alejandrovrod/blocks-core @alejandrovrod/blocks-react
 # o
-pnpm add @vk/blocks-core @vk/blocks-react
+pnpm add @alejandrovrod/blocks-core @alejandrovrod/blocks-react
 # o
-yarn add @vk/blocks-core @vk/blocks-react
+yarn add @alejandrovrod/blocks-core @alejandrovrod/blocks-react
 ```
 
 ### Vue
 
 ```bash
-npm install @vk/blocks-core @vk/blocks-vue
+npm install @alejandrovrod/blocks-core @alejandrovrod/blocks-vue
 # o
-pnpm add @vk/blocks-core @vk/blocks-vue
+pnpm add @alejandrovrod/blocks-core @alejandrovrod/blocks-vue
 # o
-yarn add @vk/blocks-core @vk/blocks-vue
+yarn add @alejandrovrod/blocks-core @alejandrovrod/blocks-vue
 ```
 
 ### Angular
 
 ```bash
-npm install @vk/blocks-core @vk/blocks-angular
+npm install @alejandrovrod/blocks-core @alejandrovrod/blocks-angular
 # o
-pnpm add @vk/blocks-core @vk/blocks-angular
+pnpm add @alejandrovrod/blocks-core @alejandrovrod/blocks-angular
 # o
-yarn add @vk/blocks-core @vk/blocks-angular
+yarn add @alejandrovrod/blocks-core @alejandrovrod/blocks-angular
 ```
 
 ## Uso en el Código
@@ -153,24 +153,24 @@ yarn add @vk/blocks-core @vk/blocks-angular
 ### React
 
 ```tsx
-import { useCart } from '@vk/blocks-react';
-import { ProductCard } from '@vk/blocks-react';
+import { useCart } from '@alejandrovrod/blocks-react';
+import { ProductCard } from '@alejandrovrod/blocks-react';
 ```
 
 ### Vue
 
 ```vue
 <script setup>
-import { useCart } from '@vk/blocks-vue';
-import ProductCard from '@vk/blocks-vue/components/ProductCard.vue';
+import { useCart } from '@alejandrovrod/blocks-vue';
+import ProductCard from '@alejandrovrod/blocks-vue/components/ProductCard.vue';
 </script>
 ```
 
 ### Angular
 
 ```typescript
-import { CartService } from '@vk/blocks-angular';
-import { ProductCardComponent } from '@vk/blocks-angular';
+import { CartService } from '@alejandrovrod/blocks-angular';
+import { ProductCardComponent } from '@alejandrovrod/blocks-angular';
 ```
 
 ## Versiones Disponibles
@@ -178,7 +178,7 @@ import { ProductCardComponent } from '@vk/blocks-angular';
 Para ver las versiones disponibles:
 
 ```bash
-npm view @vk/blocks-core versions --registry=https://npm.pkg.github.com
+npm view @alejandrovrod/blocks-core versions --registry=https://npm.pkg.github.com
 ```
 
 ## Troubleshooting
@@ -186,13 +186,13 @@ npm view @vk/blocks-core versions --registry=https://npm.pkg.github.com
 ### Error: 401 Unauthorized
 
 **Si el repositorio es público:**
-- Intenta primero sin token (solo con `@vk:registry=https://npm.pkg.github.com`)
+- Intenta primero sin token (solo con `@alejandrovrod:registry=https://npm.pkg.github.com`)
 - Si aún falla, puede ser una limitación de GitHub Packages - usa un token
 
 **Si el repositorio es privado o necesitas token:**
 - Verifica que tu token tenga el scope `read:packages`
 - Asegúrate de que el token esté configurado correctamente en `.npmrc`
-- Verifica que el scope `@vk` esté configurado correctamente
+- Verifica que el scope `@alejandrovrod` esté configurado correctamente
 
 ### Error: 404 Not Found
 
@@ -213,4 +213,6 @@ Las nuevas versiones se publican automáticamente cuando se crea un release en G
 2. Selecciona el workflow "Publish Packages to GitHub Packages"
 3. Haz clic en "Run workflow"
 4. Ingresa la versión a publicar (ej: `0.1.0`)
+
+
 

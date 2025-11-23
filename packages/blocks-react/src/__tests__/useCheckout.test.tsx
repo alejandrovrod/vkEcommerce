@@ -6,7 +6,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, waitFor } from '@testing-library/react';
 import { act } from 'react';
 import { useCheckout } from '../checkout/useCheckout';
-import type { CheckoutOptions } from '@vk/blocks-core';
+import type { CheckoutOptions } from '@alejandrovrod/blocks-core';
 
 // Mock fetch for Mercado Pago API calls
 global.fetch = vi.fn();
@@ -158,4 +158,5 @@ describe('useCheckout', () => {
     expect(result.current.session).toBeNull();
   });
 });
+
 

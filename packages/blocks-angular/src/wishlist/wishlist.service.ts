@@ -3,8 +3,8 @@
  */
 
 import { Injectable, signal, computed } from '@angular/core';
-import { WishlistManager, createWishlistManager } from '@vk/blocks-core';
-import type { WishlistItem, WishlistState, WishlistOptions, Product } from '@vk/blocks-core';
+import { WishlistManager, createWishlistManager } from '@alejandrovrod/blocks-core';
+import type { WishlistItem, WishlistState, WishlistOptions, Product } from '@alejandrovrod/blocks-core';
 
 /**
  * Angular service for wishlist
@@ -82,4 +82,5 @@ export class WishlistService {
     this.manager.updateItemNotes(itemId, notes);
   }
 }
+
 

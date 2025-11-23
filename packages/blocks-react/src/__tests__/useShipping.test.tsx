@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, waitFor } from '@testing-library/react';
 import { useShipping } from '../shipping/useShipping';
-import type { ShippingAddress } from '@vk/blocks-core';
+import type { ShippingAddress } from '@alejandrovrod/blocks-core';
 
 const mockAddress: ShippingAddress = {
   street: 'Av. Corrientes 123',
@@ -72,4 +72,5 @@ describe('useShipping', () => {
     expect(Array.isArray(rates.rates)).toBe(true);
   });
 });
+
 

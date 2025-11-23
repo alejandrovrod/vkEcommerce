@@ -1,5 +1,5 @@
 {
-  "name": "@vk/blocks-core",
+  "name": "@alejandrovrod/blocks-core",
   "version": "0.1.0",
   "description": "Core logic for vkecomblocks - framework agnostic",
   "main": "./dist/index.js",

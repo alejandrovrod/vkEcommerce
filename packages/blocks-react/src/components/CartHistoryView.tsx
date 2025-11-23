@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { useCartHistory } from '../hooks/useCartHistory';
-import type { CartHistoryOptions, CartHistoryEntry } from '@vk/blocks-core';
+import type { CartHistoryOptions, CartHistoryEntry } from '@alejandrovrod/blocks-core';
 
 export interface CartHistoryViewProps {
   /**
@@ -120,4 +120,5 @@ export function CartHistoryView({
     </div>
   );
 }
+
 

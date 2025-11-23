@@ -2,8 +2,8 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { mount, flushPromises } from '@vue/test-utils';
 import { defineComponent, computed } from 'vue';
 import { useCart } from '../composables/useCart';
-import { CartStore } from '@vk/blocks-core';
-import type { Product } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 describe('useCart', () => {
   beforeEach(() => {
@@ -213,4 +213,5 @@ describe('useCart', () => {
     expect(wrapper.find('[data-testid="count"]').text()).toBe('0');
   });
 });
+
 

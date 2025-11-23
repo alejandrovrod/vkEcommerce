@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { useWishlist } from '../wishlist/useWishlist';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 const mockProduct: Product = {
   id: 'prod-1',
@@ -86,4 +86,5 @@ describe('useWishlist', () => {
     expect(wrapper.vm.hasAfter).toBe(true);
   });
 });
+
 

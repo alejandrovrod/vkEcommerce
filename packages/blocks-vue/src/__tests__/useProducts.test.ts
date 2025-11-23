@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { useProducts } from '../products/useProducts';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 const mockProducts: Product[] = [
   {
@@ -107,4 +107,5 @@ describe('useProducts', () => {
     }
   });
 });
+
 

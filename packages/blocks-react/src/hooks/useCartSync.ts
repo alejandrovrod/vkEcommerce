@@ -3,9 +3,9 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { CartSync } from '@vk/blocks-core';
-import type { CartSyncOptions } from '@vk/blocks-core';
-import type { CartManager } from '@vk/blocks-core';
+import { CartSync } from '@alejandrovrod/blocks-core';
+import type { CartSyncOptions } from '@alejandrovrod/blocks-core';
+import type { CartManager } from '@alejandrovrod/blocks-core';
 
 /**
  * React hook for cart synchronization
@@ -21,7 +21,7 @@ export function useCartSync(options?: CartSyncOptions) {
     if (!managerRef.current) {
       // We'll need to get the manager from the cart store
       // For now, we'll create a sync instance when the component mounts
-      const { CartStore } = require('@vk/blocks-core');
+      const { CartStore } = require('@alejandrovrod/blocks-core');
       const store = CartStore.getInstance();
       syncRef.current = new CartSync(store, options);
       syncRef.current.initialize();
@@ -39,4 +39,5 @@ export function useCartSync(options?: CartSyncOptions) {
     isSyncing: syncRef.current !== null,
   };
 }
+
 

@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@vk'
+          scope: '@alejandrovrod'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -80,36 +80,36 @@ jobs:
           done
           # Update dependencies in framework packages
           for dir in packages/blocks-react packages/blocks-vue packages/blocks-angular; do
-            node -e "const fs = require('fs'); const pkg = JSON.parse(fs.readFileSync('$dir/package.json', 'utf8')); if (pkg.dependencies && pkg.dependencies['@vk/blocks-core']) { pkg.dependencies['@vk/blocks-core'] = '^' + '$VERSION'; fs.writeFileSync('$dir/package.json', JSON.stringify(pkg, null, 2)) }"
+            node -e "const fs = require('fs'); const pkg = JSON.parse(fs.readFileSync('$dir/package.json', 'utf8')); if (pkg.dependencies && pkg.dependencies['@alejandrovrod/blocks-core']) { pkg.dependencies['@alejandrovrod/blocks-core'] = '^' + '$VERSION'; fs.writeFileSync('$dir/package.json', JSON.stringify(pkg, null, 2)) }"
           done
 
       - name: Configure .npmrc for publishing
         run: |
-          echo "@vk:registry=https://npm.pkg.github.com" > .npmrc
+          echo "@alejandrovrod:registry=https://npm.pkg.github.com" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
-      - name: Publish @vk/blocks-core
+      - name: Publish @alejandrovrod/blocks-core
         run: |
           cd packages/blocks-core
           pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish @vk/blocks-react
+      - name: Publish @alejandrovrod/blocks-react
         run: |
           cd packages/blocks-react
           pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish @vk/blocks-vue
+      - name: Publish @alejandrovrod/blocks-vue
         run: |
           cd packages/blocks-vue
           pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish @vk/blocks-angular
+      - name: Publish @alejandrovrod/blocks-angular
         run: |
           cd packages/blocks-angular
           pnpm publish --no-git-checks --access public

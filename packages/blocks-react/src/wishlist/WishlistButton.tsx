@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { useWishlist } from './useWishlist';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 export interface WishlistButtonProps {
   /**
@@ -104,4 +104,5 @@ export function WishlistButton({
     </button>
   );
 }
+
 

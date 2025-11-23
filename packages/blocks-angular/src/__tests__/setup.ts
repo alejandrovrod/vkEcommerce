@@ -106,3 +106,4 @@ testBed.configureCompiler({
     { provide: ResourceLoader, useClass: VitestResourceLoader },
   ],
 });
+

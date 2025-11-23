@@ -3,8 +3,8 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { CartHistory } from '@vk/blocks-core';
-import type { CartHistoryOptions, CartHistoryEntry, CartState } from '@vk/blocks-core';
+import { CartHistory } from '@alejandrovrod/blocks-core';
+import type { CartHistoryOptions, CartHistoryEntry, CartState } from '@alejandrovrod/blocks-core';
 
 /**
  * React hook for cart history
@@ -64,4 +64,5 @@ export function useCartHistory(options?: CartHistoryOptions) {
     getLatest,
   };
 }
+
 

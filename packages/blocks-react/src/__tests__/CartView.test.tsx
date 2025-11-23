@@ -2,8 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { CartView } from '../components/CartView';
 import { useCart } from '../hooks/useCart';
-import { CartStore } from '@vk/blocks-core';
-import type { Product } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 // Mock useCart hook
 vi.mock('../hooks/useCart', () => ({
@@ -187,4 +187,5 @@ describe('CartView', () => {
     expect(listItems.length).toBe(1);
   });
 });
+
 

@@ -3,8 +3,8 @@
  */
 
 import { Injectable, signal } from '@angular/core';
-import { CartSync, CartStore } from '@vk/blocks-core';
-import type { CartSyncOptions } from '@vk/blocks-core';
+import { CartSync, CartStore } from '@alejandrovrod/blocks-core';
+import type { CartSyncOptions } from '@alejandrovrod/blocks-core';
 
 /**
  * Angular service for cart synchronization
@@ -44,4 +44,5 @@ export class CartSyncService {
     }
   }
 }
+
 

@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import { h } from 'vue';
 import CartSummary from '../components/CartSummary.vue';
 import { useCart } from '../composables/useCart';
-import { CartStore } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
 import { flushPromises } from '@vue/test-utils';
 
 // Mock useCart composable
@@ -186,4 +186,5 @@ describe('CartSummary', () => {
     expect(wrapper.find('.vkecom-cart-summary-item-count').exists()).toBe(false);
   });
 });
+
 

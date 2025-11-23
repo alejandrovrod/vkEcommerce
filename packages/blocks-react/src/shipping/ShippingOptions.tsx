@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import type { ShippingRate } from '@vk/blocks-core';
+import type { ShippingRate } from '@alejandrovrod/blocks-core';
 
 export interface ShippingOptionsProps {
   /**
@@ -99,4 +99,5 @@ export function ShippingOptions({
     </div>
   );
 }
+
 

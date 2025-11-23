@@ -26,3 +26,4 @@ export class WishlistViewComponent {
     return `$${price.toFixed(2)}`;
   }
 }
+

@@ -3,8 +3,8 @@
  */
 
 import { ref, computed, onUnmounted } from 'vue';
-import { createWishlistManager } from '@vk/blocks-core';
-import type { WishlistItem, WishlistState, WishlistOptions, Product } from '@vk/blocks-core';
+import { createWishlistManager } from '@alejandrovrod/blocks-core';
+import type { WishlistItem, WishlistState, WishlistOptions, Product } from '@alejandrovrod/blocks-core';
 
 /**
  * Use wishlist composable return type
@@ -78,4 +78,5 @@ export function useWishlist(options?: WishlistOptions): UseWishlistReturn {
 }
 
 import { readonly } from 'vue';
+
 

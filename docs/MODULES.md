@@ -18,7 +18,7 @@ Documentación detallada de cada módulo disponible en vkecomblocks.
 ### Core API
 
 ```typescript
-import { createCartManager, CartManager } from '@vk/blocks-core';
+import { createCartManager, CartManager } from '@alejandrovrod/blocks-core';
 
 const manager = createCartManager({
   persist: true, // localStorage por defecto
@@ -40,7 +40,7 @@ const { items, total, itemCount } = state;
 ### React
 
 ```tsx
-import { useCart, CartView, CartSummary, CartItem } from '@vk/blocks-react';
+import { useCart, CartView, CartSummary, CartItem } from '@alejandrovrod/blocks-react';
 
 function App() {
   const { items, addItem, removeItem, updateQuantity, total, itemCount } = useCart({
@@ -69,9 +69,9 @@ function App() {
 
 ```vue
 <script setup>
-import { useCart } from '@vk/blocks-vue';
-import CartView from '@vk/blocks-vue/components/CartView.vue';
-import CartSummary from '@vk/blocks-vue/components/CartSummary.vue';
+import { useCart } from '@alejandrovrod/blocks-vue';
+import CartView from '@alejandrovrod/blocks-vue/components/CartView.vue';
+import CartSummary from '@alejandrovrod/blocks-vue/components/CartSummary.vue';
 
 const { items, addItem, removeItem, total } = useCart({ persist: true });
 </script>
@@ -86,7 +86,7 @@ const { items, addItem, removeItem, total } = useCart({ persist: true });
 
 ```typescript
 import { Component } from '@angular/core';
-import { CartService } from '@vk/blocks-angular';
+import { CartService } from '@alejandrovrod/blocks-angular';
 
 @Component({
   selector: 'app-cart',
@@ -111,7 +111,7 @@ export class CartComponent {
 ### Core API
 
 ```typescript
-import { createCheckoutManager } from '@vk/blocks-core';
+import { createCheckoutManager } from '@alejandrovrod/blocks-core';
 
 const manager = createCheckoutManager({
   currency: 'ARS',
@@ -140,7 +140,7 @@ const result = await manager.processPayment(paymentId);
 ### React
 
 ```tsx
-import { useCheckout, CheckoutForm, MercadoPagoButton } from '@vk/blocks-react';
+import { useCheckout, CheckoutForm, MercadoPagoButton } from '@alejandrovrod/blocks-react';
 
 function CheckoutPage() {
   const checkout = useCheckout({
@@ -172,7 +172,7 @@ function CheckoutPage() {
 ### Core API
 
 ```typescript
-import { createProductManager } from '@vk/blocks-core';
+import { createProductManager } from '@alejandrovrod/blocks-core';
 
 const manager = createProductManager({
   products: initialProducts,
@@ -203,7 +203,7 @@ manager.removeProduct(id);
 ### React
 
 ```tsx
-import { useProducts, ProductList, ProductSearch, ProductFilters, ProductCard } from '@vk/blocks-react';
+import { useProducts, ProductList, ProductSearch, ProductFilters, ProductCard } from '@alejandrovrod/blocks-react';
 
 function ProductsPage() {
   const { 
@@ -240,11 +240,11 @@ function ProductsPage() {
 
 ```vue
 <script setup>
-import { useProducts } from '@vk/blocks-vue';
-import ProductCard from '@vk/blocks-vue/components/ProductCard.vue';
-import ProductList from '@vk/blocks-vue/components/ProductList.vue';
-import ProductSearch from '@vk/blocks-vue/components/ProductSearch.vue';
-import ProductFilters from '@vk/blocks-vue/components/ProductFilters.vue';
+import { useProducts } from '@alejandrovrod/blocks-vue';
+import ProductCard from '@alejandrovrod/blocks-vue/components/ProductCard.vue';
+import ProductList from '@alejandrovrod/blocks-vue/components/ProductList.vue';
+import ProductSearch from '@alejandrovrod/blocks-vue/components/ProductSearch.vue';
+import ProductFilters from '@alejandrovrod/blocks-vue/components/ProductFilters.vue';
 
 const { 
   products, 
@@ -276,7 +276,7 @@ const {
 
 ```typescript
 import { Component } from '@angular/core';
-import { ProductService, ProductCardComponent, ProductListComponent } from '@vk/blocks-angular';
+import { ProductService, ProductCardComponent, ProductListComponent } from '@alejandrovrod/blocks-angular';
 
 @Component({
   selector: 'app-products',
@@ -324,7 +324,7 @@ Componente reutilizable para mostrar tarjetas de productos con funcionalidad de 
 ### React
 
 ```tsx
-import { ProductCard } from '@vk/blocks-react';
+import { ProductCard } from '@alejandrovrod/blocks-react';
 
 // Uso básico
 <ProductCard product={product} />
@@ -353,7 +353,7 @@ import { ProductCard } from '@vk/blocks-react';
 
 ```vue
 <script setup>
-import ProductCard from '@vk/blocks-vue/components/ProductCard.vue';
+import ProductCard from '@alejandrovrod/blocks-vue/components/ProductCard.vue';
 </script>
 
 <template>
@@ -387,7 +387,7 @@ import ProductCard from '@vk/blocks-vue/components/ProductCard.vue';
 
 ```typescript
 import { Component } from '@angular/core';
-import { ProductCardComponent } from '@vk/blocks-angular';
+import { ProductCardComponent } from '@alejandrovrod/blocks-angular';
 
 @Component({
   selector: 'app-products',
@@ -427,7 +427,7 @@ export class ProductsComponent {
 ### Core API
 
 ```typescript
-import { createWishlistManager } from '@vk/blocks-core';
+import { createWishlistManager } from '@alejandrovrod/blocks-core';
 
 const manager = createWishlistManager({
   persist: true,
@@ -443,7 +443,7 @@ manager.clear();
 ### React
 
 ```tsx
-import { useWishlist, WishlistButton, WishlistView } from '@vk/blocks-react';
+import { useWishlist, WishlistButton, WishlistView } from '@alejandrovrod/blocks-react';
 
 function ProductCard({ product }) {
   const { addItem, removeItem, hasProduct } = useWishlist();
@@ -475,7 +475,7 @@ function ProductCard({ product }) {
 ### Core API
 
 ```typescript
-import { createShippingManager, CorreosArgentinaProvider } from '@vk/blocks-core';
+import { createShippingManager, CorreosArgentinaProvider } from '@alejandrovrod/blocks-core';
 
 const manager = createShippingManager({
   defaultProvider: new CorreosArgentinaProvider(),
@@ -504,7 +504,7 @@ const cheapest = await manager.getCheapestRate(request);
 ### React
 
 ```tsx
-import { useShipping, ShippingCalculator, AddressForm } from '@vk/blocks-react';
+import { useShipping, ShippingCalculator, AddressForm } from '@alejandrovrod/blocks-react';
 
 function ShippingPage() {
   const { calculateRates, rates, loading, error } = useShipping();
@@ -536,7 +536,7 @@ function ShippingPage() {
 Sincronización automática entre pestañas del navegador.
 
 ```typescript
-import { CartSync } from '@vk/blocks-core';
+import { CartSync } from '@alejandrovrod/blocks-core';
 
 const sync = new CartSync(cartManager);
 sync.initialize();
@@ -546,7 +546,7 @@ sync.initialize();
 
 **React:**
 ```tsx
-import { useCartSync } from '@vk/blocks-react';
+import { useCartSync } from '@alejandrovrod/blocks-react';
 
 function App() {
   useCartSync(); // Sincronización automática
@@ -559,7 +559,7 @@ function App() {
 Historial de estados del carrito con capacidad de restauración.
 
 ```typescript
-import { CartHistory } from '@vk/blocks-core';
+import { CartHistory } from '@alejandrovrod/blocks-core';
 
 const history = new CartHistory(cartManager);
 history.addState(); // Guardar estado actual
@@ -569,7 +569,7 @@ history.restoreState(entryId); // Restaurar un estado anterior
 
 **React:**
 ```tsx
-import { useCartHistory, CartHistoryView } from '@vk/blocks-react';
+import { useCartHistory, CartHistoryView } from '@alejandrovrod/blocks-react';
 
 function App() {
   const history = useCartHistory();
@@ -588,5 +588,7 @@ function App() {
 
 - [Storage Strategies](../packages/blocks-core/STORAGE.md) - Documentación completa de estrategias de almacenamiento
 - [API Reference](./API.md) - Referencia completa de la API (próximamente)
+
+
 
 

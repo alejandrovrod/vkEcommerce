@@ -6,8 +6,8 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { ProductCardComponent } from '../products/product-card.component';
 import { CartService } from '../services/cart.service';
-import { CartStore } from '@vk/blocks-core';
-import type { Product } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 const mockProduct: Product = {
   id: '1',
@@ -163,4 +163,5 @@ describe.skip('ProductCardComponent', () => {
     expect(compiled.textContent).toContain('$20.00');
   });
 });
+
 

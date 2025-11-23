@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed, NO_ERRORS_SCHEMA } from '@angular/core/testi
 import { BrowserModule } from '@angular/platform-browser';
 import { CartViewComponent } from '../components/cart-view.component';
 import { CartService } from '../services/cart.service';
-import { CartStore } from '@vk/blocks-core';
-import type { Product } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 import { loadComponentTemplate } from './test-helpers';
 
 // NOTE: These tests are skipped due to a known issue with Angular 21 and Vitest
@@ -113,3 +113,4 @@ describe.skip('CartViewComponent', () => {
     expect(list).toBeTruthy();
   });
 });
+

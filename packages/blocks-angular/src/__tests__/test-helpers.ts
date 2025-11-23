@@ -11,3 +11,4 @@ export function loadComponentTemplate(componentName: string): string {
   const templatePath = resolve(__dirname, `../components/${componentName}.component.html`);
   return readFileSync(templatePath, 'utf-8');
 }
+

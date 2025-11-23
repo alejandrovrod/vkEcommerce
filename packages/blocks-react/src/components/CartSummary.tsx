@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCart } from '../hooks/useCart';
-import type { CartManagerOptions } from '@vk/blocks-core';
+import type { CartManagerOptions } from '@alejandrovrod/blocks-core';
 
 export interface CartSummaryProps {
   className?: string;
@@ -133,4 +133,5 @@ export function CartSummary({
     </div>
   );
 }
+
 

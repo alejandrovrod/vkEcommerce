@@ -5,7 +5,7 @@ import {
   type CartState,
   type Product,
   type CartManagerOptions,
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 /**
  * Angular service for cart management using Signals
@@ -85,4 +85,5 @@ export class CartService {
     this.manager.clear();
   }
 }
+
 

@@ -158,3 +158,7 @@ export function createWishlistManager(options?: WishlistOptions): WishlistManage
   return new WishlistManager(options);
 }
 
+
+
+
+

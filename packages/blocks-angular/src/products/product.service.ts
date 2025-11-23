@@ -3,9 +3,9 @@
  */
 
 import { Injectable, signal } from '@angular/core';
-import { ProductManager, createProductManager } from '@vk/blocks-core';
-import { ProductSearch } from '@vk/blocks-core';
-import type { Product, ProductManagerOptions, SearchOptions, SearchResult, ProductFilter, ProductSort } from '@vk/blocks-core';
+import { ProductManager, createProductManager } from '@alejandrovrod/blocks-core';
+import { ProductSearch } from '@alejandrovrod/blocks-core';
+import type { Product, ProductManagerOptions, SearchOptions, SearchResult, ProductFilter, ProductSort } from '@alejandrovrod/blocks-core';
 
 /**
  * Angular service for products
@@ -211,4 +211,5 @@ export class ProductService {
     return result.totalPages;
   }
 }
+
 

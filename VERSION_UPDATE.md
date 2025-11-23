@@ -6,7 +6,7 @@ Se han actualizado todos los paquetes a las últimas versiones estables y compat
 
 ## Versiones Actualizadas
 
-### React (@vk/blocks-react)
+### React (@alejandrovrod/blocks-react)
 - **React**: `18.2.0` → `18.3.1` ✅
 - **React DOM**: `18.2.0` → `18.3.1` ✅
 - **@types/react**: `18.2.45` → `18.3.12` ✅
@@ -15,14 +15,14 @@ Se han actualizado todos los paquetes a las últimas versiones estables y compat
 - **@vitejs/plugin-react**: `4.2.1` → `4.3.1` ✅
 - **Peer Dependencies**: Actualizado a `>=18.0.0`
 
-### Vue (@vk/blocks-vue)
+### Vue (@alejandrovrod/blocks-vue)
 - **Vue**: `3.4.3` → `3.5.13` ✅ (Última versión estable)
 - **@vue/test-utils**: `2.4.3` → `2.4.6` ✅
 - **@vitejs/plugin-vue**: `5.0.2` → `5.1.4` ✅
 - **jsdom**: `23.0.1` → `24.1.3` ✅
 - **Peer Dependencies**: Mantiene `>=3.0.0`
 
-### Angular (@vk/blocks-angular)
+### Angular (@alejandrovrod/blocks-angular)
 - **@angular/core**: `16.2.12` → `19.0.0` ✅ (Actualización mayor)
 - **@angular/common**: `16.2.12` → `19.0.0` ✅
 - **zone.js**: `0.14.2` → `0.15.0` ✅
@@ -79,4 +79,5 @@ Se han actualizado todos los paquetes a las últimas versiones estables y compat
 - **Vue 3.5**: Incluye mejoras de rendimiento y nuevas características
 - **React 18.3**: Versión estable con mejoras de rendimiento
 - Todas las versiones son compatibles entre sí y con TypeScript 5.6.3
+
 

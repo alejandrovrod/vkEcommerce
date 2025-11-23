@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import type { PaymentMethodDetails, PaymentMethod } from '@vk/blocks-core';
+import type { PaymentMethodDetails, PaymentMethod } from '@alejandrovrod/blocks-core';
 
 export interface PaymentMethodSelectorProps {
   /**
@@ -103,4 +103,5 @@ export function PaymentMethodSelector({
     </div>
   );
 }
+
 

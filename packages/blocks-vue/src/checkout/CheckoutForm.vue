@@ -87,7 +87,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useCheckout } from './useCheckout';
-import type { ShippingAddress, BillingAddress, PaymentMethodDetails } from '@vk/blocks-core';
+import type { ShippingAddress, BillingAddress, PaymentMethodDetails } from '@alejandrovrod/blocks-core';
 
 interface Props {
   subtotal: number;
@@ -166,4 +166,5 @@ const handlePaymentChange = (method: Partial<PaymentMethodDetails>) => {
   paymentMethod.value = method;
 };
 </script>
+
 

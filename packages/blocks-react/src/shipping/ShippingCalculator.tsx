@@ -4,7 +4,7 @@
 
 import React, { useState, FormEvent } from 'react';
 import { useShipping } from './useShipping';
-import type { ShippingAddress, ShippingCalculationRequest } from '@vk/blocks-core';
+import type { ShippingAddress, ShippingCalculationRequest } from '@alejandrovrod/blocks-core';
 
 export interface ShippingCalculatorProps {
   /**
@@ -29,7 +29,7 @@ export interface ShippingCalculatorProps {
   /**
    * On rates calculated callback
    */
-  onRatesCalculated?: (rates: import('@vk/blocks-core').ShippingRate[]) => void;
+  onRatesCalculated?: (rates: import('@alejandrovrod/blocks-core').ShippingRate[]) => void;
   
   /**
    * Custom render for address form
@@ -44,9 +44,9 @@ export interface ShippingCalculatorProps {
    * Custom render for rates
    */
   renderRates?: (props: {
-    rates: import('@vk/blocks-core').ShippingRate[];
+    rates: import('@alejandrovrod/blocks-core').ShippingRate[];
     loading: boolean;
-    onSelect: (rate: import('@vk/blocks-core').ShippingRate) => void;
+    onSelect: (rate: import('@alejandrovrod/blocks-core').ShippingRate) => void;
   }) => React.ReactNode;
   
   /**
@@ -173,4 +173,5 @@ export function ShippingCalculator({
     </div>
   );
 }
+
 

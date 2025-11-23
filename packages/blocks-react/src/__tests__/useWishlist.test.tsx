@@ -6,7 +6,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { renderHook, waitFor } from '@testing-library/react';
 import { act } from 'react';
 import { useWishlist } from '../wishlist/useWishlist';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 const mockProduct: Product = {
   id: 'prod-1',
@@ -19,7 +19,7 @@ const mockProduct: Product = {
 describe('useWishlist', () => {
   beforeEach(() => {
     // Reset WishlistStore singleton
-    const { WishlistStore } = require('@vk/blocks-core');
+    const { WishlistStore } = require('@alejandrovrod/blocks-core');
     if (WishlistStore.resetInstance) {
       WishlistStore.resetInstance();
     }
@@ -138,4 +138,5 @@ describe('useWishlist', () => {
     expect(result.current.items[0].notes).toBe('Remember to check reviews');
   });
 });
+
 

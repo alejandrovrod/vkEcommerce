@@ -30,10 +30,10 @@ $body = @"
 
 First public release of vkecomblocks packages:
 
-- @vk/blocks-core@$Version
-- @vk/blocks-react@$Version
-- @vk/blocks-vue@$Version
-- @vk/blocks-angular@$Version
+- @alejandrovrod/blocks-core@$Version
+- @alejandrovrod/blocks-react@$Version
+- @alejandrovrod/blocks-vue@$Version
+- @alejandrovrod/blocks-angular@$Version
 
 ### Installation
 
@@ -75,5 +75,7 @@ try {
     }
     exit 1
 }
+
+
 
 

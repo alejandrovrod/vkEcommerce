@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { useShipping } from '../shipping/useShipping';
-import type { ShippingAddress } from '@vk/blocks-core';
+import type { ShippingAddress } from '@alejandrovrod/blocks-core';
 
 const mockAddress: ShippingAddress = {
   street: 'Av. Corrientes 123',
@@ -60,4 +60,5 @@ describe('useShipping', () => {
     expect(Array.isArray(options)).toBe(true);
   });
 });
+
 

@@ -74,3 +74,7 @@ export type StateChangeCallback = (state: CartState) => void;
  */
 export type ErrorCallback = (error: Error) => void;
 
+
+
+
+

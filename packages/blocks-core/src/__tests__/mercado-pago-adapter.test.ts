@@ -105,3 +105,7 @@ describe('MercadoPagoAdapter', () => {
   });
 });
 
+
+
+
+

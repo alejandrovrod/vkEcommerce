@@ -8,7 +8,7 @@ El módulo de carrito soporta múltiples estrategias de persistencia, permitiend
 **Sin persistencia** - Los datos se pierden al recargar la página.
 
 ```typescript
-import { createCartManager } from '@vk/blocks-core';
+import { createCartManager } from '@alejandrovrod/blocks-core';
 
 // Por defecto, sin persistencia
 const manager = createCartManager();
@@ -26,7 +26,7 @@ const manager = createCartManager();
 **Persistencia en el navegador** - Los datos persisten entre sesiones.
 
 ```typescript
-import { createCartManager } from '@vk/blocks-core';
+import { createCartManager } from '@alejandrovrod/blocks-core';
 
 // Con localStorage (explícito)
 const manager = createCartManager({ persist: true });
@@ -54,7 +54,7 @@ const manager = createCartManager({
 **Persistencia por sesión** - Los datos se pierden al cerrar la pestaña.
 
 ```typescript
-import { createCartManager, SessionStorageCartStorage } from '@vk/blocks-core';
+import { createCartManager, SessionStorageCartStorage } from '@alejandrovrod/blocks-core';
 
 const storage = new SessionStorageCartStorage('mi-cart');
 const manager = createCartManager({ storage });
@@ -71,7 +71,7 @@ const manager = createCartManager({ storage });
 **Almacenamiento robusto** - Soporta más datos y mejor rendimiento.
 
 ```typescript
-import { createCartManager, IndexedDBCartStorage } from '@vk/blocks-core';
+import { createCartManager, IndexedDBCartStorage } from '@alejandrovrod/blocks-core';
 
 const storage = new IndexedDBCartStorage('mi-tienda-db', 'cart');
 
@@ -99,7 +99,7 @@ const manager = createCartManager({ storage });
 **Sincronización con backend** - Los datos se guardan en el servidor.
 
 ```typescript
-import { createCartManager, type CartStorage, type CartState } from '@vk/blocks-core';
+import { createCartManager, type CartStorage, type CartState } from '@alejandrovrod/blocks-core';
 
 class ApiCartStorage implements CartStorage {
   constructor(
@@ -149,7 +149,7 @@ const manager = createCartManager({ storage });
 ## Ejemplo Completo: API Storage con Carga Inicial
 
 ```typescript
-import { createCartManager, type CartStorage, type CartState } from '@vk/blocks-core';
+import { createCartManager, type CartStorage, type CartState } from '@alejandrovrod/blocks-core';
 
 class ApiCartStorage implements CartStorage {
   private cachedState: CartState | null = null;
@@ -263,4 +263,12 @@ const manager = createCartManager({ storage });
 2. **Privacidad**: SessionStorage es mejor si no quieres datos persistentes
 3. **Performance**: IndexedDB es mejor para carritos grandes (>100 items)
 4. **Sincronización**: API Storage requiere manejo de errores y retry logic
+
+
+
+
+
+
+
+
 

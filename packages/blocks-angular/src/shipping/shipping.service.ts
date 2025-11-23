@@ -3,13 +3,13 @@
  */
 
 import { Injectable, signal } from '@angular/core';
-import { ShippingManager, createShippingManager } from '@vk/blocks-core';
+import { ShippingManager, createShippingManager } from '@alejandrovrod/blocks-core';
 import type {
   ShippingAddress,
   ShippingCalculationRequest,
   ShippingCalculationResult,
   ShippingRate,
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 /**
  * Angular service for shipping
@@ -94,13 +94,13 @@ export class ShippingService {
   /**
    * Get available shipping options
    */
-  getAvailableOptions(): import('@vk/blocks-core').ShippingOption[] {
+  getAvailableOptions(): import('@alejandrovrod/blocks-core').ShippingOption[] {
     return this.manager.getAvailableOptions();
   }
 
   // Local state management for address and selected option
   private addressSignal = signal<ShippingAddress | null>(null);
-  private selectedOptionSignal = signal<import('@vk/blocks-core').ShippingOption | null>(null);
+  private selectedOptionSignal = signal<import('@alejandrovrod/blocks-core').ShippingOption | null>(null);
 
   /**
    * Set shipping address (local state)
@@ -128,8 +128,9 @@ export class ShippingService {
   /**
    * Get selected shipping option
    */
-  selectedOption(): import('@vk/blocks-core').ShippingOption | null {
+  selectedOption(): import('@alejandrovrod/blocks-core').ShippingOption | null {
     return this.selectedOptionSignal();
   }
 }
+
 

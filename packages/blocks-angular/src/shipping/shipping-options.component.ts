@@ -4,7 +4,7 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import type { ShippingRate } from '@vk/blocks-core';
+import type { ShippingRate } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-shipping-options',
@@ -25,3 +25,4 @@ export class ShippingOptionsComponent {
     return `$${price.toFixed(2)}`;
   }
 }
+

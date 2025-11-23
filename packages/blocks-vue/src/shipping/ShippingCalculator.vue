@@ -67,7 +67,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useShipping } from './useShipping';
-import type { ShippingAddress, ShippingCalculationRequest } from '@vk/blocks-core';
+import type { ShippingAddress, ShippingCalculationRequest } from '@alejandrovrod/blocks-core';
 
 interface Props {
   items: Array<{
@@ -81,7 +81,7 @@ interface Props {
     value?: number;
   }>;
   className?: string;
-  onRatesCalculated?: (rates: import('@vk/blocks-core').ShippingRate[]) => void;
+  onRatesCalculated?: (rates: import('@alejandrovrod/blocks-core').ShippingRate[]) => void;
 }
 
 const props = defineProps<Props>();
@@ -111,4 +111,5 @@ const handleAddressChange = (newAddress: Partial<ShippingAddress>) => {
   address.value = newAddress;
 };
 </script>
+
 

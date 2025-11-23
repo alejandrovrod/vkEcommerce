@@ -3,14 +3,14 @@
  */
 
 import { Injectable, signal, computed } from '@angular/core';
-import { CheckoutManager, createCheckoutManager } from '@vk/blocks-core';
+import { CheckoutManager, createCheckoutManager } from '@alejandrovrod/blocks-core';
 import type {
   CheckoutSession,
   ShippingAddress,
   BillingAddress,
   PaymentMethodDetails,
   PaymentResult,
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 /**
  * Angular service for checkout
@@ -210,4 +210,5 @@ export class CheckoutService {
     }
   }
 }
+
 

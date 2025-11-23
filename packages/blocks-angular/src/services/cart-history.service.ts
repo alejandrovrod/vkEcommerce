@@ -3,8 +3,8 @@
  */
 
 import { Injectable, signal, computed } from '@angular/core';
-import { CartHistory } from '@vk/blocks-core';
-import type { CartHistoryOptions, CartHistoryEntry, CartState } from '@vk/blocks-core';
+import { CartHistory } from '@alejandrovrod/blocks-core';
+import type { CartHistoryOptions, CartHistoryEntry, CartState } from '@alejandrovrod/blocks-core';
 
 /**
  * Angular service for cart history
@@ -67,4 +67,5 @@ export class CartHistoryService {
     this.entriesSignal.set([]);
   }
 }
+
 

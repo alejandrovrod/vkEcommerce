@@ -3,14 +3,14 @@
  */
 
 import { ref } from 'vue';
-import { createShippingManager } from '@vk/blocks-core';
+import { createShippingManager } from '@alejandrovrod/blocks-core';
 import type {
   ShippingAddress,
   ShippingCalculationRequest,
   ShippingCalculationResult,
   ShippingManagerOptions,
   ShippingRate,
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 /**
  * Use shipping composable return type
@@ -20,7 +20,7 @@ export interface UseShippingReturn {
   loading: Readonly<import('vue').Ref<boolean>>;
   error: Readonly<import('vue').Ref<Error | null>>;
   address: Readonly<import('vue').Ref<ShippingAddress | null>>;
-  selectedOption: Readonly<import('vue').Ref<import('@vk/blocks-core').ShippingOption | null>>;
+  selectedOption: Readonly<import('vue').Ref<import('@alejandrovrod/blocks-core').ShippingOption | null>>;
   calculate: (request: ShippingCalculationRequest) => Promise<ShippingCalculationResult>;
   getCheapestRate: (request: ShippingCalculationRequest) => Promise<ShippingRate | null>;
   validateAddress: (address: ShippingAddress) => Promise<{
@@ -28,7 +28,7 @@ export interface UseShippingReturn {
     normalized?: ShippingAddress;
     errors?: Array<{ field: string; message: string }>;
   }>;
-  getAvailableOptions: () => import('@vk/blocks-core').ShippingOption[];
+  getAvailableOptions: () => import('@alejandrovrod/blocks-core').ShippingOption[];
   setShippingAddress: (address: ShippingAddress) => void;
   selectShippingOption: (optionId: string) => void;
 }
@@ -42,7 +42,7 @@ export function useShipping(options?: ShippingManagerOptions): UseShippingReturn
   const loading = ref(false);
   const error = ref<Error | null>(null);
   const address = ref<ShippingAddress | null>(null);
-  const selectedOption = ref<import('@vk/blocks-core').ShippingOption | null>(null);
+  const selectedOption = ref<import('@alejandrovrod/blocks-core').ShippingOption | null>(null);
 
   const calculate = async (request: ShippingCalculationRequest) => {
     loading.value = true;
@@ -117,4 +117,5 @@ export function useShipping(options?: ShippingManagerOptions): UseShippingReturn
 }
 
 import { readonly } from 'vue';
+
 

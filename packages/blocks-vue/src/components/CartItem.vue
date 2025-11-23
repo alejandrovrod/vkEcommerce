@@ -100,7 +100,7 @@
 </template>
 
 <script setup lang="ts">
-import type { CartItem as CartItemType } from '@vk/blocks-core';
+import type { CartItem as CartItemType } from '@alejandrovrod/blocks-core';
 
 export interface CartItemProps {
   item: CartItemType;
@@ -129,4 +129,5 @@ const handleRemove = () => {
   emit('remove', props.item.id);
 };
 </script>
+
 

@@ -3,7 +3,7 @@ import { useCart } from '../hooks/useCart';
 import { useCartSync } from '../hooks/useCartSync';
 import { CartItem } from './CartItem';
 import type { CartItemProps } from './CartItem';
-import type { CartManagerOptions, CartItem as CartItemType, CartSyncOptions, CartHistoryOptions } from '@vk/blocks-core';
+import type { CartManagerOptions, CartItem as CartItemType, CartSyncOptions, CartHistoryOptions } from '@alejandrovrod/blocks-core';
 
 export interface CartViewProps {
   className?: string;
@@ -100,4 +100,5 @@ export function CartView({
     </div>
   );
 }
+
 

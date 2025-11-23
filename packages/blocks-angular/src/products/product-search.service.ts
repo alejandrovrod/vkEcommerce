@@ -3,8 +3,8 @@
  */
 
 import { Injectable, signal } from '@angular/core';
-import { ProductSearch } from '@vk/blocks-core';
-import type { Product, SearchOptions, SearchResult } from '@vk/blocks-core';
+import { ProductSearch } from '@alejandrovrod/blocks-core';
+import type { Product, SearchOptions, SearchResult } from '@alejandrovrod/blocks-core';
 
 /**
  * Angular service for product search
@@ -78,4 +78,5 @@ export class ProductSearchService {
     });
   }
 }
+
 

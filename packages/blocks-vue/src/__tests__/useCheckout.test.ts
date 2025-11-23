@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { useCheckout } from '../checkout/useCheckout';
-import type { CheckoutOptions } from '@vk/blocks-core';
+import type { CheckoutOptions } from '@alejandrovrod/blocks-core';
 
 // Mock fetch for Mercado Pago API calls
 global.fetch = vi.fn();
@@ -83,4 +83,5 @@ describe('useCheckout', () => {
     expect(wrapper.vm.checkout.session.value?.paymentMethod?.method).toBe('mercado_pago');
   });
 });
+
 

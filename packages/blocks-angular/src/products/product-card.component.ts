@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ContentChildren, QueryList, ElementRef, AfterContentInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../services/cart.service';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 /**
  * ProductCard component - Displays a product card with add to cart functionality
@@ -66,4 +66,5 @@ export class ProductCardComponent implements AfterContentInit {
     return `$${price.toFixed(2)}`;
   }
 }
+
 

@@ -24,7 +24,7 @@ export interface WishlistViewProps {
   /**
    * Custom render for wishlist item
    */
-  renderItem?: (item: import('@vk/blocks-core').WishlistItem, onRemove: (itemId: string) => void) => React.ReactNode;
+  renderItem?: (item: import('@alejandrovrod/blocks-core').WishlistItem, onRemove: (itemId: string) => void) => React.ReactNode;
   
   /**
    * Custom render for header
@@ -95,4 +95,5 @@ export function WishlistView({
     </div>
   );
 }
+
 

@@ -5,12 +5,12 @@
 import React, { useState, FormEvent } from 'react';
 import { useCheckout } from './useCheckout';
 // Import types - using the same pattern as useCheckout.ts
-// These types should be exported from @vk/blocks-core but may need explicit exports
+// These types should be exported from @alejandrovrod/blocks-core but may need explicit exports
 import type { 
   ShippingAddress,
   BillingAddress, 
   PaymentMethodDetails 
-} from '@vk/blocks-core';
+} from '@alejandrovrod/blocks-core';
 
 export interface CheckoutFormProps {
   /**
@@ -264,4 +264,5 @@ export function CheckoutForm({
     </form>
   );
 }
+
 

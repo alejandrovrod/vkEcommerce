@@ -2,8 +2,8 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import CartView from '../components/CartView.vue';
 import { useCart } from '../composables/useCart';
-import { CartStore } from '@vk/blocks-core';
-import type { Product } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 import { flushPromises } from '@vue/test-utils';
 
 // Mock useCart composable
@@ -187,4 +187,5 @@ describe('CartView', () => {
     expect(list.exists()).toBe(true);
   });
 });
+
 

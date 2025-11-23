@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import type { CartItem as CartItemType } from '@vk/blocks-core';
+import type { CartItem as CartItemType } from '@alejandrovrod/blocks-core';
 
 /**
  * CartItem component - Displays a single cart item
@@ -35,3 +35,4 @@ export class CartItemComponent {
     return `$${price.toFixed(2)}`;
   }
 }
+

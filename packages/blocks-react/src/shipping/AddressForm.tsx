@@ -3,7 +3,7 @@
  */
 
 import React, { useState, FormEvent } from 'react';
-import type { ShippingAddress } from '@vk/blocks-core';
+import type { ShippingAddress } from '@alejandrovrod/blocks-core';
 
 export interface AddressFormProps {
   /**
@@ -227,4 +227,5 @@ export function AddressForm({
     </form>
   );
 }
+
 

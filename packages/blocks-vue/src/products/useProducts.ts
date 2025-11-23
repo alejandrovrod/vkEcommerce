@@ -3,8 +3,8 @@
  */
 
 import { ref, onMounted, readonly } from 'vue';
-import { createProductManager, ProductSearch } from '@vk/blocks-core';
-import type { Product, ProductManagerOptions, ProductFilter, ProductSort } from '@vk/blocks-core';
+import { createProductManager, ProductSearch } from '@alejandrovrod/blocks-core';
+import type { Product, ProductManagerOptions, ProductFilter, ProductSort } from '@alejandrovrod/blocks-core';
 
 /**
  * Use products composable return type
@@ -21,9 +21,9 @@ export interface UseProductsReturn {
   updateProduct: (id: string, updates: Partial<Product>) => void;
   removeProduct: (id: string) => void;
   setProducts: (products: Product[]) => void;
-  setFilters: (filters: import('@vk/blocks-core').ProductFilter) => void;
+  setFilters: (filters: import('@alejandrovrod/blocks-core').ProductFilter) => void;
   setSearchQuery: (query: string) => void;
-  setSortBy: (sort: import('@vk/blocks-core').ProductSort) => void;
+  setSortBy: (sort: import('@alejandrovrod/blocks-core').ProductSort) => void;
 }
 
 /**
@@ -131,4 +131,5 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     setSortBy,
   };
 }
+
 

@@ -4,10 +4,10 @@ Modular ecommerce blocks for React, Vue, and Angular. Framework-agnostic core wi
 
 ## Packages
 
-- `@vk/blocks-core` - Core logic (TypeScript, no framework dependencies)
-- `@vk/blocks-react` - React hooks and components
-- `@vk/blocks-vue` - Vue 3 composables and components
-- `@vk/blocks-angular` - Angular services and components
+- `@alejandrovrod/blocks-core` - Core logic (TypeScript, no framework dependencies)
+- `@alejandrovrod/blocks-react` - React hooks and components
+- `@alejandrovrod/blocks-vue` - Vue 3 composables and components
+- `@alejandrovrod/blocks-angular` - Angular services and components
 
 ## Compatibility
 
@@ -35,7 +35,7 @@ Los paquetes están publicados en **GitHub Packages**. Para instalarlos:
 
    Crea un archivo `.npmrc` en la raíz de tu proyecto:
    ```
-   @vk:registry=https://npm.pkg.github.com
+   @alejandrovrod:registry=https://npm.pkg.github.com
    ```
    
    **Nota:** Si el repositorio es público, esto es suficiente. Si es privado o tienes problemas, agrega:
@@ -48,23 +48,23 @@ Los paquetes están publicados en **GitHub Packages**. Para instalarlos:
 
    **React:**
    ```bash
-   npm install @vk/blocks-core @vk/blocks-react
+   npm install @alejandrovrod/blocks-core @alejandrovrod/blocks-react
    # o
-   pnpm add @vk/blocks-core @vk/blocks-react
+   pnpm add @alejandrovrod/blocks-core @alejandrovrod/blocks-react
    ```
 
    **Vue:**
    ```bash
-   npm install @vk/blocks-core @vk/blocks-vue
+   npm install @alejandrovrod/blocks-core @alejandrovrod/blocks-vue
    # o
-   pnpm add @vk/blocks-core @vk/blocks-vue
+   pnpm add @alejandrovrod/blocks-core @alejandrovrod/blocks-vue
    ```
 
    **Angular:**
    ```bash
-   npm install @vk/blocks-core @vk/blocks-angular
+   npm install @alejandrovrod/blocks-core @alejandrovrod/blocks-angular
    # o
-   pnpm add @vk/blocks-core @vk/blocks-angular
+   pnpm add @alejandrovrod/blocks-core @alejandrovrod/blocks-angular
    ```
 
 Para más detalles, consulta la [guía completa de instalación](./docs/INSTALLATION.md).
@@ -101,10 +101,10 @@ pnpm clean
 
 Los tests están configurados con **Vitest** en todos los paquetes:
 
-- **@vk/blocks-core**: 89 tests pasando ✅ (Cart, Checkout, Products, Wishlist, Shipping, Cart Sync, Cart History, API Storage)
-- **@vk/blocks-react**: Tests para hooks y componentes React ✅
-- **@vk/blocks-vue**: Tests para composables Vue ✅
-- **@vk/blocks-angular**: 39 tests pasando ✅ (servicios: Cart, Checkout, Products, Wishlist, Shipping)
+- **@alejandrovrod/blocks-core**: 89 tests pasando ✅ (Cart, Checkout, Products, Wishlist, Shipping, Cart Sync, Cart History, API Storage)
+- **@alejandrovrod/blocks-react**: Tests para hooks y componentes React ✅
+- **@alejandrovrod/blocks-vue**: Tests para composables Vue ✅
+- **@alejandrovrod/blocks-angular**: 39 tests pasando ✅ (servicios: Cart, Checkout, Products, Wishlist, Shipping)
 
 ### Nota sobre Tests de Componentes Angular
 
@@ -130,10 +130,10 @@ pnpm test:watch
 
 ```bash
 # Desde la raíz del monorepo
-pnpm --filter @vk/blocks-core test
-pnpm --filter @vk/blocks-react test
-pnpm --filter @vk/blocks-vue test
-pnpm --filter @vk/blocks-angular test
+pnpm --filter @alejandrovrod/blocks-core test
+pnpm --filter @alejandrovrod/blocks-react test
+pnpm --filter @alejandrovrod/blocks-vue test
+pnpm --filter @alejandrovrod/blocks-angular test
 
 # O navegando al directorio del paquete
 cd packages/blocks-core
@@ -154,7 +154,7 @@ pnpm test -- --coverage
 ### React
 
 ```tsx
-import { useCart, ProductCard } from '@vk/blocks-react';
+import { useCart, ProductCard } from '@alejandrovrod/blocks-react';
 
 function App() {
   // Sin persistencia (por defecto)
@@ -171,8 +171,8 @@ function App() {
 
 ```vue
 <script setup>
-import { useCart } from '@vk/blocks-vue';
-import ProductCard from '@vk/blocks-vue/components/ProductCard.vue';
+import { useCart } from '@alejandrovrod/blocks-vue';
+import ProductCard from '@alejandrovrod/blocks-vue/components/ProductCard.vue';
 
 // Sin persistencia (por defecto)
 const { items, addItem } = useCart();
@@ -190,7 +190,7 @@ const { items, addItem } = useCart();
 
 ```typescript
 import { Component } from '@angular/core';
-import { CartService, ProductCardComponent } from '@vk/blocks-angular';
+import { CartService, ProductCardComponent } from '@alejandrovrod/blocks-angular';
 
 @Component({
   selector: 'app-products',
@@ -244,7 +244,7 @@ Gestión completa del carrito de compras con sincronización, historial y múlti
 
 **React:**
 ```tsx
-import { useCart, CartView, CartSummary } from '@vk/blocks-react';
+import { useCart, CartView, CartSummary } from '@alejandrovrod/blocks-react';
 
 function App() {
   const { items, addItem, removeItem, total } = useCart({ persist: true });
@@ -261,7 +261,7 @@ function App() {
 **Vue:**
 ```vue
 <script setup>
-import { useCart } from '@vk/blocks-vue';
+import { useCart } from '@alejandrovrod/blocks-vue';
 
 const { items, addItem, removeItem, total } = useCart({ persist: true });
 </script>
@@ -270,7 +270,7 @@ const { items, addItem, removeItem, total } = useCart({ persist: true });
 **Angular:**
 ```typescript
 import { Component } from '@angular/core';
-import { CartService } from '@vk/blocks-angular';
+import { CartService } from '@alejandrovrod/blocks-angular';
 
 @Component({
   selector: 'app-cart',
@@ -301,7 +301,7 @@ Flujo completo de checkout con integración a Mercado Pago y otros procesadores 
 
 **React:**
 ```tsx
-import { useCheckout, CheckoutForm, MercadoPagoButton } from '@vk/blocks-react';
+import { useCheckout, CheckoutForm, MercadoPagoButton } from '@alejandrovrod/blocks-react';
 
 function CheckoutPage() {
   const checkout = useCheckout({
@@ -332,7 +332,7 @@ Gestión completa de productos con búsqueda, filtrado, ordenamiento y paginaci�
 
 **React:**
 ```tsx
-import { useProducts, ProductList, ProductSearch, ProductFilters } from '@vk/blocks-react';
+import { useProducts, ProductList, ProductSearch, ProductFilters } from '@alejandrovrod/blocks-react';
 
 function ProductsPage() {
   const { products, setSearchQuery, setFilters, setSortBy } = useProducts({
@@ -361,7 +361,7 @@ Lista de deseos con persistencia y sincronización.
 
 **React:**
 ```tsx
-import { useWishlist, WishlistButton, WishlistView } from '@vk/blocks-react';
+import { useWishlist, WishlistButton, WishlistView } from '@alejandrovrod/blocks-react';
 
 function ProductCard({ product }) {
   const { addItem, removeItem, hasProduct } = useWishlist();
@@ -392,7 +392,7 @@ Cálculo de costos de envío con soporte para múltiples proveedores y regiones 
 
 **React:**
 ```tsx
-import { useShipping, ShippingCalculator, AddressForm } from '@vk/blocks-react';
+import { useShipping, ShippingCalculator, AddressForm } from '@alejandrovrod/blocks-react';
 
 function ShippingPage() {
   const { calculateRates, rates, loading } = useShipping();
@@ -418,7 +418,7 @@ Sincronización entre pestañas y historial de carritos.
 
 **React:**
 ```tsx
-import { useCartSync, useCartHistory, CartHistoryView } from '@vk/blocks-react';
+import { useCartSync, useCartHistory, CartHistoryView } from '@alejandrovrod/blocks-react';
 
 function App() {
   // Sincronización automática entre pestañas
@@ -460,9 +460,11 @@ const manager = createCartManager();
 const manager = createCartManager({ persist: true });
 
 // Con storage personalizado (IndexedDB, API, etc.)
-import { IndexedDBCartStorage } from '@vk/blocks-core';
+import { IndexedDBCartStorage } from '@alejandrovrod/blocks-core';
 const storage = new IndexedDBCartStorage();
 await storage.initialize();
 const manager = createCartManager({ storage });
 ```
+
+
 

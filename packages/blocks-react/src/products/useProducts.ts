@@ -3,8 +3,8 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { createProductManager, ProductSearch } from '@vk/blocks-core';
-import type { Product, ProductManagerOptions, ProductFilter, ProductSort } from '@vk/blocks-core';
+import { createProductManager, ProductSearch } from '@alejandrovrod/blocks-core';
+import type { Product, ProductManagerOptions, ProductFilter, ProductSort } from '@alejandrovrod/blocks-core';
 
 /**
  * Use products hook return type
@@ -68,7 +68,7 @@ export interface UseProductsReturn {
   /**
    * Set filters
    */
-  setFilters: (filters: import('@vk/blocks-core').ProductFilter) => void;
+  setFilters: (filters: import('@alejandrovrod/blocks-core').ProductFilter) => void;
   
   /**
    * Set search query
@@ -78,7 +78,7 @@ export interface UseProductsReturn {
   /**
    * Set sort options
    */
-  setSortBy: (sort: import('@vk/blocks-core').ProductSort) => void;
+  setSortBy: (sort: import('@alejandrovrod/blocks-core').ProductSort) => void;
 }
 
 /**
@@ -240,4 +240,5 @@ export function useProducts(options?: ProductManagerOptions): UseProductsReturn 
     setSortBy,
   };
 }
+
 

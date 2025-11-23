@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCart } from '../hooks/useCart';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 export interface ProductCardProps {
   product: Product;
@@ -112,4 +112,5 @@ export function ProductCard({
     </article>
   );
 }
+
 

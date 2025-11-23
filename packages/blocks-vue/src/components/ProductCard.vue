@@ -77,7 +77,7 @@
 
 <script setup lang="ts">
 import { useCart } from '../composables/useCart';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 export interface ProductCardProps {
   product: Product;
@@ -101,6 +101,7 @@ const handleAddToCart = () => {
   emit('addToCart', props.product);
 };
 </script>
+
 
 
 

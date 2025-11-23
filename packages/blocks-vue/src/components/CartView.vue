@@ -39,7 +39,7 @@
 import { useCart } from '../composables/useCart';
 import { useCartSync } from '../composables/useCartSync';
 import CartItem from './CartItem.vue';
-import type { CartManagerOptions, CartSyncOptions, CartHistoryOptions } from '@vk/blocks-core';
+import type { CartManagerOptions, CartSyncOptions, CartHistoryOptions } from '@alejandrovrod/blocks-core';
 
 export interface CartViewProps {
   className?: string;
@@ -85,4 +85,5 @@ const handleRemove = (itemId: string) => {
   removeItem(itemId);
 };
 </script>
+
 

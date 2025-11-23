@@ -5,7 +5,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { ProductFilters } from '../products/ProductFilters';
-import type { ProductFilter } from '@vk/blocks-core';
+import type { ProductFilter } from '@alejandrovrod/blocks-core';
 
 describe('ProductFilters', () => {
   const mockFilters: ProductFilter = {
@@ -79,4 +79,5 @@ describe('ProductFilters', () => {
     }
   });
 });
+
 

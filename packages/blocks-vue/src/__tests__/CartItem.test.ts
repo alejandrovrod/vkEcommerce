@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import CartItem from '../components/CartItem.vue';
-import { CartStore } from '@vk/blocks-core';
-import type { CartItem as CartItemType } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { CartItem as CartItemType } from '@alejandrovrod/blocks-core';
 
 const mockCartItem: CartItemType = {
   id: '1',
@@ -129,4 +129,5 @@ describe('CartItem', () => {
     expect(wrapper.find('[data-testid="custom-content"]').exists()).toBe(true);
   });
 });
+
 

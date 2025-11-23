@@ -5,7 +5,7 @@
 import { Component, Input, Output, EventEmitter, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckoutService } from './checkout.service';
-import type { ShippingAddress, BillingAddress, PaymentMethodDetails } from '@vk/blocks-core';
+import type { ShippingAddress, BillingAddress, PaymentMethodDetails } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-checkout-form',
@@ -71,4 +71,5 @@ export class CheckoutFormComponent implements OnInit {
     }
   }
 }
+
 

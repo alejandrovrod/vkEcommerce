@@ -67,7 +67,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { ProductFilter } from '@vk/blocks-core';
+import type { ProductFilter } from '@alejandrovrod/blocks-core';
 
 interface Props {
   filters: ProductFilter;
@@ -135,4 +135,5 @@ const handleStockToggle = () => {
   });
 };
 </script>
+
 

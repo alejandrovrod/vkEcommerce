@@ -5,7 +5,7 @@
 import { Component, Input, Output, EventEmitter, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import type { ShippingAddress } from '@vk/blocks-core';
+import type { ShippingAddress } from '@alejandrovrod/blocks-core';
 
 @Component({
   selector: 'vk-address-form',
@@ -69,4 +69,5 @@ export class AddressFormComponent implements OnInit {
     }
   }
 }
+
 

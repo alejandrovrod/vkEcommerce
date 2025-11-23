@@ -3,8 +3,8 @@
  */
 
 import { ref, computed } from 'vue';
-import { CartHistory } from '@vk/blocks-core';
-import type { CartHistoryOptions, CartHistoryEntry, CartState } from '@vk/blocks-core';
+import { CartHistory } from '@alejandrovrod/blocks-core';
+import type { CartHistoryOptions, CartHistoryEntry, CartState } from '@alejandrovrod/blocks-core';
 
 /**
  * Vue composable for cart history
@@ -48,4 +48,5 @@ export function useCartHistory(options?: CartHistoryOptions) {
     getLatest,
   };
 }
+
 

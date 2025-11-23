@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 export interface ProductListProps {
   /**
@@ -87,4 +87,5 @@ export function ProductList({
     </div>
   );
 }
+
 

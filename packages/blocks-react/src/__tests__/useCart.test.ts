@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { useCart } from '../hooks/useCart';
-import { CartStore } from '@vk/blocks-core';
-import type { Product } from '@vk/blocks-core';
+import { CartStore } from '@alejandrovrod/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 describe('useCart', () => {
   beforeEach(() => {
@@ -119,4 +119,5 @@ describe('useCart', () => {
     }, { timeout: 2000 });
   });
 });
+
 

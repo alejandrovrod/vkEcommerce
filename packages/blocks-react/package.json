@@ -1,5 +1,5 @@
 {
-  "name": "@vk/blocks-react",
+  "name": "@alejandrovrod/blocks-react",
   "version": "0.1.0",
   "description": "React hooks and components for vkecomblocks",
   "main": "./dist/index.js",
@@ -27,7 +27,7 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@vk/blocks-core": "workspace:*"
+    "@alejandrovrod/blocks-core": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",

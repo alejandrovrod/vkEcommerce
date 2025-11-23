@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ShippingRate } from '@vk/blocks-core';
+import type { ShippingRate } from '@alejandrovrod/blocks-core';
 
 interface Props {
   rates: ShippingRate[];
@@ -43,4 +43,5 @@ interface Props {
 
 defineProps<Props>();
 </script>
+
 

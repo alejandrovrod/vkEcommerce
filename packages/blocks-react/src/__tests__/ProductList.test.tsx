@@ -5,7 +5,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ProductList } from '../products/ProductList';
-import type { Product } from '@vk/blocks-core';
+import type { Product } from '@alejandrovrod/blocks-core';
 
 const mockProducts: Product[] = [
   {
@@ -77,4 +77,5 @@ describe('ProductList', () => {
     expect(loadingElement || screen.getByText('Product 1')).toBeDefined();
   });
 });
+
 

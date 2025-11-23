@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { CheckoutService } from '../checkout/checkout.service';
-import type { CheckoutOptions, ShippingAddress } from '@vk/blocks-core';
+import type { CheckoutOptions, ShippingAddress } from '@alejandrovrod/blocks-core';
 
 // Mock fetch for Mercado Pago API calls
 global.fetch = vi.fn();
@@ -93,4 +93,5 @@ describe('CheckoutService', () => {
     expect(service.session()).toBeNull();
   });
 });
+
 

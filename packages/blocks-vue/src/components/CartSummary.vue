@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useCart } from '../composables/useCart';
-import type { CartManagerOptions } from '@vk/blocks-core';
+import type { CartManagerOptions } from '@alejandrovrod/blocks-core';
 
 export interface CartSummaryProps {
   className?: string;
@@ -87,4 +87,5 @@ const handleCheckout = () => {
   emit('checkout');
 };
 </script>
+
 
