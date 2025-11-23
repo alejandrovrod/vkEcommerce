@@ -10,46 +10,7 @@ import { WishlistService } from './wishlist.service';
   selector: 'vk-wishlist-view',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div [class]="'vkecom-wishlist-view ' + (className || '')">
-      <div *ngIf="wishlist.items().length === 0" class="vkecom-wishlist-view-empty">
-        <p>{{ emptyMessage }}</p>
-      </div>
-      <div *ngIf="wishlist.items().length > 0">
-        <div class="vkecom-wishlist-list" role="list">
-          <div
-            *ngFor="let item of wishlist.items(); trackBy: trackByItemId"
-            role="listitem"
-            class="vkecom-wishlist-item"
-          >
-            <div class="vkecom-wishlist-item-content">
-              <img
-                *ngIf="item.product.image"
-                [src]="item.product.image"
-                [alt]="item.product.name"
-                class="vkecom-wishlist-item-image"
-              />
-              <div class="vkecom-wishlist-item-details">
-                <h3 class="vkecom-wishlist-item-name">{{ item.product.name }}</h3>
-                <p *ngIf="item.product.description" class="vkecom-wishlist-item-description">
-                  {{ item.product.description }}
-                </p>
-                <div class="vkecom-wishlist-item-price">{{ formatPrice(item.product.price) }}</div>
-              </div>
-              <button
-                type="button"
-                (click)="wishlist.removeItem(item.id)"
-                class="vkecom-wishlist-item-remove"
-                [attr.aria-label]="'Remove ' + item.product.name + ' from wishlist'"
-              >
-                Remove
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './wishlist-view.component.html',
 })
 export class WishlistViewComponent {
   @Input() className?: string;

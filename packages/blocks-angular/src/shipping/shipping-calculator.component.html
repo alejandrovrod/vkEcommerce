@@ -1,0 +1,62 @@
+<div [class]="'vkecom-shipping-calculator ' + (className || '')">
+  <form (ngSubmit)="handleSubmit()">
+    <div class="vkecom-shipping-address-form">
+      <input
+        type="text"
+        placeholder="Street"
+        [(ngModel)]="address.street"
+        name="street"
+        class="vkecom-shipping-field"
+      />
+      <input
+        type="text"
+        placeholder="City"
+        [(ngModel)]="address.city"
+        name="city"
+        class="vkecom-shipping-field"
+      />
+      <input
+        type="text"
+        placeholder="Postal Code"
+        [(ngModel)]="address.postalCode"
+        name="postalCode"
+        class="vkecom-shipping-field"
+      />
+      <input
+        type="text"
+        placeholder="Country"
+        [(ngModel)]="address.country"
+        name="country"
+        class="vkecom-shipping-field"
+      />
+      <button
+        type="submit"
+        [disabled]="shipping.loading()"
+        class="vkecom-shipping-calculate-button"
+      >
+        {{ shipping.loading() ? 'Calculating...' : 'Calculate Shipping' }}
+      </button>
+    </div>
+
+    <div *ngIf="shipping.error()" class="vkecom-shipping-error">
+      {{ shipping.error()?.message }}
+    </div>
+  </form>
+
+  <div *ngIf="shipping.rates().length > 0" class="vkecom-shipping-rates">
+    <h3>Shipping Options</h3>
+    <div
+      *ngFor="let rate of shipping.rates()"
+      class="vkecom-shipping-rate"
+    >
+      <div class="vkecom-shipping-rate-name">{{ rate.option.name }}</div>
+      <div class="vkecom-shipping-rate-cost">
+        {{ formatPrice(rate.cost) }} {{ rate.currency }}
+      </div>
+      <div *ngIf="rate.estimatedDays" class="vkecom-shipping-rate-days">
+        {{ rate.estimatedDays.min }}-{{ rate.estimatedDays.max }} days
+      </div>
+    </div>
+  </div>
+</div>
+

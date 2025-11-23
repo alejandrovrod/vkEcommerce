@@ -1,0 +1,84 @@
+<form
+  [class]="'vkecom-address-form ' + (className || '')"
+  (ngSubmit)="handleSubmit()"
+>
+  <div class="vkecom-address-field">
+    <label>
+      Recipient Name *
+      <input
+        type="text"
+        [(ngModel)]="address.recipientName"
+        name="recipientName"
+        [class]="['vkecom-address-input', { error: hasError('recipientName') }]"
+      />
+      <span *ngIf="showErrors && hasError('recipientName')" class="vkecom-address-error">
+        {{ getError('recipientName') }}
+      </span>
+    </label>
+  </div>
+
+  <div class="vkecom-address-field">
+    <label>
+      Street *
+      <input
+        type="text"
+        [(ngModel)]="address.street"
+        name="street"
+        [class]="['vkecom-address-input', { error: hasError('street') }]"
+      />
+      <span *ngIf="showErrors && hasError('street')" class="vkecom-address-error">
+        {{ getError('street') }}
+      </span>
+    </label>
+  </div>
+
+  <div class="vkecom-address-field">
+    <label>
+      City *
+      <input
+        type="text"
+        [(ngModel)]="address.city"
+        name="city"
+        [class]="['vkecom-address-input', { error: hasError('city') }]"
+      />
+      <span *ngIf="showErrors && hasError('city')" class="vkecom-address-error">
+        {{ getError('city') }}
+      </span>
+    </label>
+  </div>
+
+  <div class="vkecom-address-field">
+    <label>
+      Postal Code *
+      <input
+        type="text"
+        [(ngModel)]="address.postalCode"
+        name="postalCode"
+        [class]="['vkecom-address-input', { error: hasError('postalCode') }]"
+      />
+      <span *ngIf="showErrors && hasError('postalCode')" class="vkecom-address-error">
+        {{ getError('postalCode') }}
+      </span>
+    </label>
+  </div>
+
+  <div class="vkecom-address-field">
+    <label>
+      Country *
+      <input
+        type="text"
+        [(ngModel)]="address.country"
+        name="country"
+        [class]="['vkecom-address-input', { error: hasError('country') }]"
+      />
+      <span *ngIf="showErrors && hasError('country')" class="vkecom-address-error">
+        {{ getError('country') }}
+      </span>
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="errors().length > 0" class="vkecom-address-submit">
+    Continue
+  </button>
+</form>
+

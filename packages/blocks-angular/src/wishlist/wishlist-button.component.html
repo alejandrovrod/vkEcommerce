@@ -1,0 +1,13 @@
+<button
+  type="button"
+  [class]="[
+    'vkecom-wishlist-button',
+    { 'in-wishlist': inWishlist() },
+    className || ''
+  ].join(' ')"
+  [attr.aria-label]="inWishlist() ? inWishlistLabel : notInWishlistLabel"
+  (click)="handleClick()"
+>
+  {{ inWishlist() ? inWishlistLabel : notInWishlistLabel }}
+</button>
+

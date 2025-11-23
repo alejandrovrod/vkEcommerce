@@ -10,23 +10,7 @@ import type { PaymentMethodDetails, PaymentMethod } from '@vk/blocks-core';
   selector: 'vk-payment-method-selector',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div [class]="'vkecom-payment-method-selector ' + (className || '')">
-      <label
-        *ngFor="let method of methods"
-        [class]="['vkecom-payment-method-option', { selected: value?.method === method }]"
-      >
-        <input
-          type="radio"
-          name="payment-method"
-          [value]="method"
-          [checked]="value?.method === method"
-          (change)="handleSelect(method)"
-        />
-        <span>{{ getMethodLabel(method) }}</span>
-      </label>
-    </div>
-  `,
+  templateUrl: './payment-method-selector.component.html',
 })
 export class PaymentMethodSelectorComponent {
   @Input() value?: PaymentMethodDetails;

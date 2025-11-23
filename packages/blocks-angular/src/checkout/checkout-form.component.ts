@@ -2,7 +2,7 @@
  * Checkout form component
  */
 
-import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckoutService } from './checkout.service';
 import type { ShippingAddress, BillingAddress, PaymentMethodDetails } from '@vk/blocks-core';
@@ -13,7 +13,7 @@ import type { ShippingAddress, BillingAddress, PaymentMethodDetails } from '@vk/
   imports: [CommonModule],
   templateUrl: './checkout-form.component.html',
 })
-export class CheckoutFormComponent {
+export class CheckoutFormComponent implements OnInit {
   @Input() subtotal!: number;
   @Input() cartId?: string;
   @Input() className?: string;

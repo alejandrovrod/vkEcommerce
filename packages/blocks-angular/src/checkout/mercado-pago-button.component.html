@@ -1,0 +1,11 @@
+<div [class]="'vkecom-mercadopago-button ' + (className || '')">
+  <button
+    #buttonRef
+    type="button"
+    [disabled]="checkout.loading() || (!preferenceId && !checkout.session())"
+    (click)="handleClick()"
+  >
+    {{ checkout.loading() ? 'Loading...' : label }}
+  </button>
+</div>
+

@@ -11,20 +11,7 @@ import type { Product } from '@vk/blocks-core';
   selector: 'vk-wishlist-button',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <button
-      type="button"
-      [class]="[
-        'vkecom-wishlist-button',
-        { 'in-wishlist': inWishlist() },
-        className || ''
-      ].join(' ')"
-      [attr.aria-label]="inWishlist() ? inWishlistLabel : notInWishlistLabel"
-      (click)="handleClick()"
-    >
-      {{ inWishlist() ? inWishlistLabel : notInWishlistLabel }}
-    </button>
-  `,
+  templateUrl: './wishlist-button.component.html',
 })
 export class WishlistButtonComponent {
   @Input() product!: Product;

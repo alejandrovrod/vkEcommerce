@@ -1,0 +1,16 @@
+<div [class]="'vkecom-payment-method-selector ' + (className || '')">
+  <label
+    *ngFor="let method of methods"
+    [class]="['vkecom-payment-method-option', { selected: value?.method === method }]"
+  >
+    <input
+      type="radio"
+      name="payment-method"
+      [value]="method"
+      [checked]="value?.method === method"
+      (change)="handleSelect(method)"
+    />
+    <span>{{ getMethodLabel(method) }}</span>
+  </label>
+</div>
+

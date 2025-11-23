@@ -10,36 +10,7 @@ import type { ShippingRate } from '@vk/blocks-core';
   selector: 'vk-shipping-options',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div [class]="'vkecom-shipping-options ' + (className || '')">
-      <div *ngIf="rates.length === 0" class="vkecom-shipping-options-empty">
-        <p>No shipping options available</p>
-      </div>
-      <div *ngIf="rates.length > 0" role="radiogroup">
-        <label
-          *ngFor="let rate of rates"
-          [class]="['vkecom-shipping-option', { selected: selectedRateId === rate.option.id }]"
-        >
-          <input
-            type="radio"
-            name="shipping-option"
-            [value]="rate.option.id"
-            [checked]="selectedRateId === rate.option.id"
-            (change)="onSelect.emit(rate)"
-          />
-          <div class="vkecom-shipping-option-content">
-            <div class="vkecom-shipping-option-name">{{ rate.option.name }}</div>
-            <div class="vkecom-shipping-option-cost">
-              {{ formatPrice(rate.cost) }} {{ rate.currency }}
-            </div>
-            <div *ngIf="rate.estimatedDays" class="vkecom-shipping-option-days">
-              {{ rate.estimatedDays.min }}-{{ rate.estimatedDays.max }} days
-            </div>
-          </div>
-        </label>
-      </div>
-    </div>
-  `,
+  templateUrl: './shipping-options.component.html',
 })
 export class ShippingOptionsComponent {
   @Input() rates!: ShippingRate[];

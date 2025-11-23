@@ -11,53 +11,7 @@ import type { CartHistoryEntry, CartHistoryOptions } from '@vk/blocks-core';
   selector: 'vk-cart-history-view',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div [class]="'vkecom-cart-history ' + (className || '')">
-      <div *ngIf="historyService.entries().length === 0" class="vkecom-cart-history-empty">
-        <p>{{ emptyMessage }}</p>
-      </div>
-      <div *ngIf="historyService.entries().length > 0">
-        <h3 class="vkecom-cart-history-title">Cart History</h3>
-        <ul class="vkecom-cart-history-list" role="list">
-          <li
-            *ngFor="let entry of historyService.entries()"
-            class="vkecom-cart-history-entry"
-            role="listitem"
-          >
-            <div class="vkecom-cart-history-entry-content">
-              <div class="vkecom-cart-history-entry-info">
-                <div *ngIf="entry.label" class="vkecom-cart-history-entry-label">
-                  {{ entry.label }}
-                </div>
-                <div class="vkecom-cart-history-entry-date">
-                  {{ entry.timestamp | date : 'short' }}
-                </div>
-                <div class="vkecom-cart-history-entry-items">
-                  {{ formatCartHistoryEntry(entry) }}
-                </div>
-              </div>
-              <div class="vkecom-cart-history-entry-actions">
-                <button
-                  type="button"
-                  (click)="handleRestore(entry)"
-                  class="vkecom-cart-history-entry-restore"
-                >
-                  Restore
-                </button>
-                <button
-                  type="button"
-                  (click)="historyService.removeEntry(entry.id)"
-                  class="vkecom-cart-history-entry-remove"
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  `,
+  templateUrl: './cart-history-view.component.html',
 })
 export class CartHistoryViewComponent {
   @Input() className?: string;

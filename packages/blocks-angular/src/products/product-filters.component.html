@@ -1,0 +1,64 @@
+<div [class]="'vkecom-product-filters ' + (className || '')">
+  <div class="vkecom-product-filters-section">
+    <h3>Price Range</h3>
+    <input
+      type="number"
+      placeholder="Min"
+      [value]="filters.priceRange?.min || ''"
+      (input)="handlePriceMinChange($event)"
+      class="vkecom-product-filters-input"
+    />
+    <input
+      type="number"
+      placeholder="Max"
+      [value]="filters.priceRange?.max || ''"
+      (input)="handlePriceMaxChange($event)"
+      class="vkecom-product-filters-input"
+    />
+  </div>
+
+  <div
+    *ngIf="facets?.categories && facets.categories.length > 0"
+    class="vkecom-product-filters-section"
+  >
+    <h3>Categories</h3>
+    <label
+      *ngFor="let category of facets.categories"
+      class="vkecom-product-filters-checkbox"
+    >
+      <input
+        type="checkbox"
+        [checked]="filters.categories?.includes(category.id) || false"
+        (change)="handleCategoryToggle(category.id)"
+      />
+      <span>{{ category.name }} ({{ category.count }})</span>
+    </label>
+  </div>
+
+  <div
+    *ngIf="facets?.tags && facets.tags.length > 0"
+    class="vkecom-product-filters-section"
+  >
+    <h3>Tags</h3>
+    <label *ngFor="let tagItem of facets.tags" class="vkecom-product-filters-checkbox">
+      <input
+        type="checkbox"
+        [checked]="filters.tags?.includes(tagItem.tag) || false"
+        (change)="handleTagToggle(tagItem.tag)"
+      />
+      <span>{{ tagItem.tag }} ({{ tagItem.count }})</span>
+    </label>
+  </div>
+
+  <div class="vkecom-product-filters-section">
+    <label class="vkecom-product-filters-checkbox">
+      <input
+        type="checkbox"
+        [checked]="filters.inStock === true"
+        (change)="handleStockToggle()"
+      />
+      <span>In Stock Only</span>
+    </label>
+  </div>
+</div>
+

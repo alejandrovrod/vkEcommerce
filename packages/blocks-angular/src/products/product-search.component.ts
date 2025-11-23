@@ -12,20 +12,7 @@ import type { SearchOptions } from '@vk/blocks-core';
   selector: 'vk-product-search',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-    <form
-      [class]="'vkecom-product-search ' + (className || '')"
-      (ngSubmit)="handleSubmit()"
-    >
-      <input
-        type="search"
-        [(ngModel)]="localQuery"
-        [placeholder]="placeholder"
-        name="searchQuery"
-        class="vkecom-product-search-input"
-      />
-    </form>
-  `,
+  templateUrl: './product-search.component.html',
 })
 export class ProductSearchComponent {
   @Input() initialQuery?: string;

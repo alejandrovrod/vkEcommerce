@@ -10,18 +10,7 @@ import { CheckoutService } from './checkout.service';
   selector: 'vk-mercadopago-button',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div [class]="'vkecom-mercadopago-button ' + (className || '')">
-      <button
-        #buttonRef
-        type="button"
-        [disabled]="checkout.loading() || (!preferenceId && !checkout.session())"
-        (click)="handleClick()"
-      >
-        {{ checkout.loading() ? 'Loading...' : label }}
-      </button>
-    </div>
-  `,
+  templateUrl: './mercado-pago-button.component.html',
 })
 export class MercadoPagoButtonComponent implements OnInit, OnDestroy {
   @Input() publicKey!: string;
